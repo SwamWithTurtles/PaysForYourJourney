@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
     }));
 
     // Locate the views
-    app.set('views', __dirname + '/dist/assets/views');
+    app.set('views', express.static(__dirname + '/dist/assets/views'));
 
     // Locate the assets
     app.use(express.static(__dirname + '/dist/assets'));
