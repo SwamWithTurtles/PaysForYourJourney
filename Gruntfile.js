@@ -19,9 +19,13 @@ module.exports = function (grunt) {
                     'assets/scripts/**/*.js'
                 ]
             },
+            styles: {
+                files: ['assets/styles/**/*.scss'],
+                tasks: ['sass']
+            },
             css: {
                 files: [
-                    'assets/styles/**/*.css',
+                    'assets/styles/**/*.css'
                 ]
             },
             images: {
