@@ -1,4 +1,4 @@
-define(['ko', 'jquery', 'util/queryParamReader'], function(ko, $, q) {
+define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q) {
     var locFrom = ko.observable(q('loc_from'));
     var locTo = ko.observable(q('loc_to'));
 
@@ -11,16 +11,36 @@ define(['ko', 'jquery', 'util/queryParamReader'], function(ko, $, q) {
     var locToAmbiguous = ko.observable(true);
     var locFromAmbiguous = ko.observable(true);
 
+    var locToKnown = ko.observable(true);
+    var locFromKnown = ko.observable(true);
+
     var getRoutes = function() {$.getJSON('/tfl/routes?locFrom=' + locFrom() + '&locTo=' + locTo(),
         function(data) {
-            console.log(data);
 
-            ambiguityResolved(!data.from.ambig && !data.dest.ambig);
+            locFromKnown(data.from.known);
+            locToKnown(data.dest.known);
+
+            locFromAmbiguous(data.from.ambig);
+            locToAmbiguous(data.dest.ambig);
+
             if(data.from.ambig) {
+                _.forEach(data.from.options, function(option) {
+                    option.click = function() {
+                        locFrom(option.name);
+                    }
+                });
+
                 locFromDisambig(data.from.options);
             }
 
             if(data.dest.ambig) {
+                _.forEach(data.dest.options, function(option) {
+                    option.click = function() {
+                        locTo(option.name);
+                    }
+                });
+
+
                 locToDisambig(data.dest.options);
             }
 
@@ -38,11 +58,16 @@ define(['ko', 'jquery', 'util/queryParamReader'], function(ko, $, q) {
         logToAmbiguous: locToAmbiguous,
         logToOptions: locToDisambig,
 
+        locToKnown: locToKnown,
+        locFromKnown: locFromKnown,
+
         waitingForData: waitingForData,
 
         route: ko.computed(function() {
             waitingForData(true);
-            getRoutes()
+            if(locFrom() && locTo()) {
+                getRoutes()
+            }
         })
     };
 });

@@ -7,23 +7,18 @@ var extractPlaces = function(options) {
         return {name: option.place.commonName }
     });
 
-    return toDisambig;
+    return {
+        known: options ? (options.matchStatus !== "notidentified") : true,
+        ambig: options ? (options.matchStatus !== "identified") : false,
+        options: toDisambig
+    };
 }
 
-module.exports.parse = function(data) {
-    var data = JSON.parse(data);
-
-    var toLocationDisambiguation = extractPlaces(data.toLocationDisambiguation);
-    var fromLocationDisambiguation = extractPlaces(data.fromLocationDisambiguation);
+module.exports.parse = function(dataString) {
+    var data = JSON.parse(dataString);
 
     return {
-        from: {
-            ambig: true,
-            options: fromLocationDisambiguation
-        },
-        dest: {
-            ambig: true,
-            options: toLocationDisambiguation
-        }
+        from: extractPlaces(data.fromLocationDisambiguation),
+        dest: extractPlaces(data.toLocationDisambiguation)
     }
 }
