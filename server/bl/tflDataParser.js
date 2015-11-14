@@ -4,7 +4,9 @@ var extractPlaces = function(options) {
     var toDisambigOptions = options ? options.disambiguationOptions : [];
 
     var toDisambig = _.map(toDisambigOptions, function(option) {
-        return {name: option.place.commonName }
+        return {name: option.place.commonName,
+                lat: option.place.lat,
+                lon: option.place.lon }
     });
 
     return {

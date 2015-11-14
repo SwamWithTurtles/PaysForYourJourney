@@ -2,6 +2,11 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     var locFrom = ko.observable(q('loc_from'));
     var locTo = ko.observable(q('loc_to'));
 
+    var locFromLat = ko.observable();
+    var locFromLon = ko.observable();
+    var locToLon = ko.observable();
+    var locToLat = ko.observable();
+
     var waitingForData = ko.observable(true);
 
     var locFromDisambig = ko.observableArray();
@@ -30,6 +35,8 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
                 _.forEach(data.from.options, function(option) {
                     option.click = function() {
                         locFrom(option.name);
+                        locFromLat(option.lat);
+                        locFromLon(option.lon);
                     }
                 });
 
@@ -40,6 +47,8 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
                 _.forEach(data.dest.options, function(option) {
                     option.click = function() {
                         locTo(option.name);
+                        locToLat(option.lat);
+                        locToLon(option.lon);
                     }
                 });
 
@@ -64,6 +73,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
         locToKnown: locToKnown,
         locFromKnown: locFromKnown,
 
+
         waitingForData: waitingForData,
 
         ambiguityResolved: ambiguityResolved,
@@ -76,6 +86,22 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
             waitingForData(true);
             if(locFrom() && locTo()) {
                 getRoutes()
+            }
+        }),
+
+
+        mapLink: ko.computed(function() {
+            if(ambiguityResolved())
+            {
+                console.log("Test" + JSON.stringify(locFrom()));
+                console.log("Test2" + locFrom());
+                console.log("Test3" + locFrom().lat);
+
+                return "https://www.google.com/maps/embed/v1/directions?key=AIzaSyAz9Y8MnpsC3FLlzjpDPRnZEp07Wvs_O3A"
+                    + "&origin=" + locFromLat() + "," + locFromLon()
+                    + "&destination=" + locToLat() + "," + locToLon()
+                    + "&mode=flying";
+
             }
         })
     };
