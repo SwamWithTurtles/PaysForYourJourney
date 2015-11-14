@@ -3,7 +3,6 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     var locTo = ko.observable(q('loc_to'));
 
     var waitingForData = ko.observable(true);
-    var ambiguityResolved = ko.observable(false);
 
     var locFromDisambig = ko.observableArray();
     var locToDisambig = ko.observableArray();
@@ -13,6 +12,10 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     var locToKnown = ko.observable(true);
     var locFromKnown = ko.observable(true);
+
+    var ambiguityResolved = ko.computed(function() {
+        return !locToAmbiguous() && !locFromAmbiguous()
+    });
 
     var getRoutes = function() {$.getJSON('/tfl/routes?locFrom=' + locFrom() + '&locTo=' + locTo(),
         function(data) {
@@ -62,6 +65,12 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
         locFromKnown: locFromKnown,
 
         waitingForData: waitingForData,
+
+        ambiguityResolved: ambiguityResolved,
+
+        link: ko.computed(function() {
+           return "/journey?from=" + locFrom() + "&to=" + locTo();
+        }),
 
         route: ko.computed(function() {
             waitingForData(true);
