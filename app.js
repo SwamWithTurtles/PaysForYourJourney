@@ -23,8 +23,8 @@ if (process.env.NODE_ENV === 'production') {
     // Set the default layout and locate layouts and partials
     app.engine('handlebars', exphbs({
         defaultLayout: 'main',
-        layoutsDir: 'dist/views/layouts/',
-        partialsDir: 'dist/views/partials/'
+        layoutsDir: 'views/layouts/',
+        partialsDir: 'views/partials/'
     }));
 
     // Locate the views
