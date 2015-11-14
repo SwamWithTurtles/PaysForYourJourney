@@ -1,4 +1,4 @@
-<script data-main="scripts/destination" src="bower_components/requirejs/require.js"></script>
+<script data-main="scripts/disambiguation" src="bower_components/requirejs/require.js"></script>
 
 
 <div class="container">
@@ -33,8 +33,6 @@
             To: <span data-bind="text: locTo"></span>
 
             <div data-bind="if: locToKnown">
-
-
                 <div data-bind="if: logToAmbiguous"><b>This is ambiguous...</b> Did you mean?
                     <ul>
                         <!-- ko foreach: logToOptions -->
