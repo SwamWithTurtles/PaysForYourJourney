@@ -5,23 +5,60 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h1>Home Page</h1>
+            <h1>Thing we called our app</h1>
         </div>
     </div>
 
-    <div class="input-group col-xs-offset-1 col-xs-10">
+    <form action="destination">
+        <div class="input-group col-xs-offset-1 col-xs-10">
 
-        <form action="destination">
-            <div class="row">
-                <input class="form-control" placeholder="From" name="loc_from"/>
+            <div class="row" style="text-align: left; margin-bottom: 5px;">
+                <b>Plan a route:</b>
             </div>
+
+            <div class="row">
+                    <input class="form-control inputBoxOverrides" placeholder="From" name="loc_from" aria-label="..." />
+            </div>
+
             <div class="row" style="padding:5px">
             </div>
+
             <div class="row">
-                <input class="form-control" placeholder="To" name="loc_to"/><br/>
+                <input class="form-control inputBoxOverrides" placeholder="To" name="loc_to" /><br/>
             </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
             <input type="submit" data-bind="click: "/>
 
-        </form>
-    </div>
+        </div>
+    </form>
+
+    <form action="wishList">
+
+        <div class="input-group col-xs-offset-1 col-xs-10">
+
+            <div class="row" style="text-align: left; margin-bottom: 5px;">
+                <b>My wishlist:</b>
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <div class="row">
+                <input class="form-control inputBoxOverrides" placeholder="Add a new item" name="loc_from" aria-label="..." />
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <div class="row">
+                [[[[Items in the wish list]]]]
+            </div>
+
+        </div>
+
+    </form>
+
 </div>

@@ -97,7 +97,9 @@ html {
   font-style: normal; }
 
 body {
-  background-color: black; }
+  background-color: black;
+  color: white;
+  text-align: center; }
 
 /*------------------------------------*    $COLORS
 \*------------------------------------*/
@@ -329,10 +331,23 @@ input[type=password]:focus {
 
 /*------------------------------------*    $LABELS
 \*------------------------------------*/
+/*------------------------------------*    $List items
+\*------------------------------------*/
+.listOverrides {
+  color: white;
+  background-color: rgba(100, 100, 100, 0.5);
+  font-weight: bold;
+  padding: 4px 0px 4px 12px;
+  color: white; }
+
 /*------------------------------------*    $INPUTS
 \*------------------------------------*/
-/*------------------------------------*\ 
-    $ERRORS    
+.inputBoxOverrides {
+  color: white;
+  background-color: rgba(100, 100, 100, 0.5);
+  font-weight: bold; }
+
+/*------------------------------------*    $ERRORS
 \*------------------------------------*/
 .field-with-errors {
   position: relative;
@@ -393,7 +408,7 @@ input[type=password]:focus {
   border-radius: 150px;
   opacity: 0.6;
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: -10000px;
   z-index: -9999; }
 
@@ -406,7 +421,7 @@ input[type=password]:focus {
   border-radius: 150px;
   opacity: 0.6;
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: -10000px;
   z-index: -9999; }
 

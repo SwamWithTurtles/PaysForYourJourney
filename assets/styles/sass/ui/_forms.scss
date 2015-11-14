@@ -40,6 +40,18 @@ label,
 
 
 
+/*------------------------------------*\
+    $List items
+\*------------------------------------*/
+
+.listOverrides
+{
+    color: white;
+    background-color: rgba(100,100,100,0.5);
+    font-weight: bold;
+    padding: 4px 0px 4px 12px;
+    color: white;
+}
 
 
 /*------------------------------------*\
@@ -48,18 +60,23 @@ label,
 
 .text-input input,
 textarea{
-    
+
     &:focus{
 
     }
 }
 
+.inputBoxOverrides
+{
+    color: white;
+    background-color: rgba(100,100,100,0.5);
+    font-weight: bold;
+}
 
 
 
-
-/*------------------------------------*\ 
-    $ERRORS    
+/*------------------------------------*\
+    $ERRORS
 \*------------------------------------*/
 
 .field-with-errors{
