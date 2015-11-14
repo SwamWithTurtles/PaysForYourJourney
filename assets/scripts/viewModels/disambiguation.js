@@ -93,14 +93,10 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
         mapLink: ko.computed(function() {
             if(ambiguityResolved())
             {
-                console.log("Test" + JSON.stringify(locFrom()));
-                console.log("Test2" + locFrom());
-                console.log("Test3" + locFrom().lat);
-
                 return "https://www.google.com/maps/embed/v1/directions?key=AIzaSyAz9Y8MnpsC3FLlzjpDPRnZEp07Wvs_O3A"
-                    + "&origin=" + locFromLat() + "," + locFromLon()
-                    + "&destination=" + locToLat() + "," + locToLon()
-                    + "&mode=flying";
+                    + "&origin=" + locFrom().replace(" ", "+")   //+ locFromLat() + "," + locFromLon()
+                    + "&destination=" + locTo().replace(" ","+") //+ locToLat() + "," + locToLon()
+                    + "&mode=transit";
 
             }
         })
