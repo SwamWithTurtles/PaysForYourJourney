@@ -253,7 +253,6 @@ module.exports = function (grunt) {
     // Register Tasks
     // Workon
     grunt.registerTask('workon', 'Start working on this project.', [
-        'jshint',
         'sass',
         'express:dev',
         'open:site',
@@ -281,7 +280,7 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         'rev',
-        'usemin',
+        'usemin'
     ]);
 
 };
