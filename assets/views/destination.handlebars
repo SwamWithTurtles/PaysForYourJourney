@@ -6,36 +6,56 @@
     <h1>Destination</h1>
 
 
-
     <div class="spinner" data-bind="if: waitingForData">SPINNER</div>
 
     <div class="disambiguiation-content" data-bind="if: !waitingForData()"><br/>
 
         <div>
             From: <span data-bind="text: locFrom"></span>
-            <div data-bind="if: locFromAmbiguous"> <b>This is ambiguous...</b> Did you mean?<br/>
-            <ul>
-                <!-- ko foreach: locFromOptions -->
-                <li data-bind="text: name" ></li><br/>
-            <!-- /ko -->
-            </ul>
 
+            <div data-bind="if: locFromKnown">
+                <div data-bind="if: locFromAmbiguous"><b>This is ambiguous...</b> Did you mean?<br/>
+                    <ul>
+                        <!-- ko foreach: locFromOptions -->
+                        <li data-bind="text: name, click: click"></li>
+                        <br/>
+                        <!-- /ko -->
+                    </ul>
+
+                </div>
+            </div>
+            <div data-bind="if: !locFromKnown()">
+                No. You're being silly.
             </div>
         </div>
 
         <div>
             To: <span data-bind="text: locTo"></span>
 
-            <div data-bind="if: logToAmbiguous"> <b>This is ambiguous...</b> Did you mean?
-                <ul>
-                    <!-- ko foreach: logToOptions -->
-                    <li data-bind="text: name" ></li><br/>
-                    <!-- /ko -->
-            </ul>
+            <div data-bind="if: locToKnown">
+
+
+                <div data-bind="if: logToAmbiguous"><b>This is ambiguous...</b> Did you mean?
+                    <ul>
+                        <!-- ko foreach: logToOptions -->
+                        <li data-bind="text: name, click: click"></li>
+                        <br/>
+                        <!-- /ko -->
+                    </ul>
+                </div>
+            </div>
+            <div data-bind="if: !locToKnown()">
+                No. You're being silly.
             </div>
 
         </div>
 
+
+    </div>
+
+
+    <div class="destination" data-bind="if: ambiguityResolved">
+        <a class="btn btn-s btn-info" data-bind="attr: {href: link}">Find Journey</a>
     </div>
 
 </div>

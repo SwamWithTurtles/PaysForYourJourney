@@ -1,7 +1,8 @@
 require.config({
     paths: {
         'jquery': "../bower_components/jquery/dist/jquery.min",
-        'ko': "../bower_components/knockout/dist/knockout"
+        'ko': "../bower_components/knockout/dist/knockout",
+        'lodash': "../bower_components/lodash/lodash.min"
     },
     shim: {
         'jquery': {
