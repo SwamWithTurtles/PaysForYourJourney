@@ -3,49 +3,75 @@
 
 <div class="container">
 
-    <h1>Destination</h1>
+    <div data-bind="if: ambiguityResolved">
+        <h2>Your journey</h2>
+    </div>
+    <div data-bind="if: !ambiguityResolved()">
+        <h2>Clarify your journey</h2>
+    </div>
 
 
     <div class="spinner" data-bind="if: waitingForData">
         <img src="images/spinner.gif" />
     </div>
 
-    <div class="disambiguiation-content" data-bind="if: !waitingForData()"><br/>
+    <div class="col-xs-offset-1 col-xs-10 disambiguiation-content" data-bind="if: !waitingForData()"><br/>
 
-        <div>
-            From: <span data-bind="text: locFrom"></span>
+        <div class="ToFromGroup">
+
+            <div class="ToFromGroupHeader">
+                From: "<span data-bind="text: locFrom"></span>"
+                <div data-bind="if: locFromAmbiguous" style="float:right;">
+                    <img style="width: 40px;" src="images/multipleOptions.png" />
+                </div>
+            </div>
 
             <div data-bind="if: locFromKnown">
-                <div data-bind="if: locFromAmbiguous"><b>This is ambiguous...</b> Did you mean?<br/>
-                    <ul>
-                        <!-- ko foreach: locFromOptions -->
-                        <li data-bind="text: name, click: click"></li>
-                        <br/>
-                        <!-- /ko -->
-                    </ul>
+                <div data-bind="if: locFromAmbiguous">
+
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <b>Multiple possible locations...</b> Do you mean?
+                    </div>
+
+                    <div class="ToFromDisAmbList">
+                        <ul>
+                            <!-- ko foreach: locFromOptions -->
+                            <li data-bind="text: name, click: click"></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
 
                 </div>
             </div>
             <div data-bind="if: !locFromKnown()">
-                No. You're being silly.
+                Cannot find a match for this location.
             </div>
         </div>
 
-        <div>
-            To: <span data-bind="text: locTo"></span>
+        <div  class="ToFromGroup">
+
+            <div  class="ToFromGroupHeader">
+                To: "<span data-bind="text: locTo"></span>"
+            </div>
 
             <div data-bind="if: locToKnown">
-                <div data-bind="if: logToAmbiguous"><b>This is ambiguous...</b> Did you mean?
-                    <ul>
-                        <!-- ko foreach: logToOptions -->
-                        <li data-bind="text: name, click: click"></li>
-                        <br/>
-                        <!-- /ko -->
-                    </ul>
+                <div data-bind="if: logToAmbiguous">
+
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <b>Multiple possible locations...</b> Do you mean?
+                    </div>
+
+                    <div class="ToFromDisAmbList">
+                        <ul>
+                            <!-- ko foreach: logToOptions -->
+                            <li data-bind="text: name, click: click"></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div data-bind="if: !locToKnown()">
-                No. You're being silly.
+                Cannot find a match for this location.
             </div>
 
         </div>
