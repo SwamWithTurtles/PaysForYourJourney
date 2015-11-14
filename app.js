@@ -57,15 +57,11 @@ app.set('view engine', 'handlebars');
  * Routes
  */
 // Index Page
-app.get('/', function(request, response, next) {
-    response.render('index');
-});
+var apiRoutes = require('./server/routing/apiRoute.js');
+apiRoutes.setUp(app);
 
-app.get('/api/sample', function(request, response) {
-    response.send({
-        hello: "World"
-    });
-});
+var viewRoutes = require('./server/routing/viewRoute.js');
+viewRoutes.setUp(app);
 
 
 /*

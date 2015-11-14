@@ -1,3 +1,5 @@
 app.get('/', function(request, response, next) {
-    response.render('index');
+    response.send({
+        hello: "World"
+    });
 });
