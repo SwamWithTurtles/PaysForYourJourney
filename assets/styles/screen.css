@@ -73,13 +73,14 @@ body .journey-steps {
   border: 1px white solid;
   border-top: 0;
   border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px; }
+  border-bottom-right-radius: 5px;
+  background: #444; }
 
 body .journey-container {
   margin: 0;
+  display: table-row;
   border: 1px white solid;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-radius: 5px; }
   body .journey-container .journey-duration {
     float: right;
     border-radius: 2px;
