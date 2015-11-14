@@ -250,6 +250,7 @@ module.exports = function (grunt) {
     // Workon
     grunt.registerTask('workon', 'Start working on this project.', [
         'jshint',
+        'sass',
         'express:dev',
         'open:site',
         'open:editor',
@@ -268,6 +269,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', 'Build production ready assets and views.', [
         'clean:dist',
         'concurrent:dist',
+        'sass',
         'useminPrepare',
         'imagemin',
         'concat',
