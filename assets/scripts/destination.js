@@ -12,7 +12,5 @@ require.config({
 
 
 require(["ko", "viewModels/destination", "jquery"], function(ko, destVM, $) {
-    console.log(destVM);
-
     ko.applyBindings(destVM);
 });

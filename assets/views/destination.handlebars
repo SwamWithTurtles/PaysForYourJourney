@@ -5,6 +5,32 @@
 
     <h1>Destination</h1>
 
-    From: <span data-bind="text: locFrom"></span>, To: <span data-bind="text: locTo"></span>
+
+
+    <div class="spinner" data-bind="if: waitingForData">SPINNER</div>
+
+    <div class="disambiguiation-content" data-bind="if: !waitingForData()"><br/>
+
+        <div>
+            From: <span data-bind="text: locFrom"></span>
+            <div data-bind="if: locFromAmbiguous"> <b>(Ambiguous)</b>
+            <!-- ko foreach: locFromOptions -->
+                <span data-bind="text: name" ></span>
+            <!-- /ko -->
+            </div>
+        </div>
+
+        <div>
+            To: <span data-bind="text: locTo"></span>
+
+            <div data-bind="if: logToAmbiguous">
+                <!-- ko foreach: logToOptions -->
+                <span text="$data" ></span>
+                <!-- /ko -->
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
