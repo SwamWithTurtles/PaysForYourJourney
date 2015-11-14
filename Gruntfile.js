@@ -214,10 +214,7 @@ module.exports = function (grunt) {
                     cwd: 'assets',
                     dest: 'dist/assets',
                     src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'images/**/*.{webp,gif}',
-                        'styles/fonts/{,*/}*.*',
+                        '**/*.*'
                     ]
                 }, {
                     expand: true,
