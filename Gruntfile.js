@@ -105,11 +105,7 @@ module.exports = function (grunt) {
         // Open Config
         open: {
             site: {
-                path: 'http://localhost:3000',
-                app: 'Opera'
-            },
-            editor: {
-                path: './'
+                path: 'http://localhost:3000'
             }
         },
 
@@ -256,7 +252,6 @@ module.exports = function (grunt) {
         'sass',
         'express:dev',
         'open:site',
-        'open:editor',
         'watch'
     ]);
 
