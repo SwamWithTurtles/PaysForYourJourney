@@ -8,7 +8,20 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     var getRoutes = function() {$.getJSON('/tfl/journey?locFrom=' + locFrom() + '&locTo=' + locTo(),
         function(data) {
+            _.forEach(data, function(journey) {
+                journey.visible = ko.observable(false);
+
+                journey.click = function() {
+                    _.forEach(data, function(j) {
+                        j.visible(false);
+                    });
+
+                    journey.visible(true);
+                }
+            });
+
             journeys(data);
+
             waitingForData(false);
         });
     };
@@ -16,7 +29,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     return {
         journey: {
             from: locFrom,
-            to: locTo,
+            to: locTo
         },
 
         journeys: journeys,

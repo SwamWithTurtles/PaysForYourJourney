@@ -15,11 +15,20 @@
             To: <span data-bind="text: to"></span>
         </div>
 
-        <h2>Journeys</h2>
+        <h2>Direct Journey</h2>
 
-        <div data-bind="foreach: journeys">
-            <p><b><span data-bind="text: duration"></span> minutes:</b>
-            <span data-bind="text: steps"></span></p>
+        <div data-bind="with: journeys()[0]">
+
+            <div class="col-xs-10 col-xs-offset-1 journey-container">
+                <div class="left-container">
+                    <h3 class="journey-title">Direct</h3>
+                    <div class="more-details" data-bind="click: click">More Details</div>
+                </div>
+                <div class="journey-duration col-xs-3"><span class="minutes" data-bind="text: duration"></span><br/> minutes</div>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 journey-steps">
+                <span class="" data-bind="text: steps, visible: visible"></span>
+            </div>
 
         </div>
 
