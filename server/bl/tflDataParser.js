@@ -14,7 +14,24 @@ var extractPlaces = function(options) {
     };
 }
 
-module.exports.parse = function(dataString) {
+var nicelyFormatted = function(legs) {
+    return _.map(legs, function(leg) {
+        return (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : "Walk") + " to " + leg.arrivalPoint.commonName;
+    }).join(", ");
+}
+
+module.exports.parseJourney = function(dataString) {
+    var data = JSON.parse(dataString);
+
+    return _.map(data.journeys, function(journey) {
+        return {
+            duration: journey.duration,
+            steps: nicelyFormatted(journey.legs)
+        }
+    });
+}
+
+module.exports.parsePlaces = function(dataString) {
     var data = JSON.parse(dataString);
 
     return {
