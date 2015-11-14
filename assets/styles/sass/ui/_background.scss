@@ -1,0 +1,27 @@
+#circle1 {
+    width: 300px;
+    height: 300px;
+    background: #ef3627;
+    -moz-border-radius: 150px;
+    -webkit-border-radius: 150px;
+    border-radius: 150px;
+    opacity: 0.6;
+    position: absolute;
+    top: 50px;
+    left: -10000px;
+    z-index: -9999;
+}
+
+#circle2 {
+    width: 300px;
+    height: 300px;
+    background: #fcb836;
+    -moz-border-radius: 150px;
+    -webkit-border-radius: 150px;
+    border-radius: 150px;
+    opacity: 0.6;
+    position: absolute;
+    top: 50px;
+    left: -10000px;
+    z-index: -9999;
+}

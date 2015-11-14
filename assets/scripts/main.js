@@ -10,7 +10,7 @@ require.config({
     }
 });
 
-require(["ko", "jquery"], function(ko, $) {
+require(["ko", "jquery","layout"], function(ko, $, _layout ) {
 
     var viewModel = {
         hello: ko.observable()
@@ -21,4 +21,5 @@ require(["ko", "jquery"], function(ko, $) {
     });
 
     ko.applyBindings(viewModel);
+
 });
