@@ -171,7 +171,7 @@ module.exports = function (grunt) {
         cssmin: {
             // This task is pre-configured if you do not wish to use Usemin
             // blocks for your CSS. By default, the Usemin block from your
-            // `index.html` will take care of minification, e.g.
+            // `index.handlebars` will take care of minification, e.g.
             //
             //     <!-- build:css({.tmp,app}) styles/main.css -->
             //
