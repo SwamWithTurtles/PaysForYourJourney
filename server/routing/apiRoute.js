@@ -9,11 +9,17 @@ var setUp = function(app) {
     });
 
     app.get('/tfl/routes', function(req, res) {
-        console.log(req.query);
-
         var data = tflGateway.getData(req.query['locFrom'], req.query['locTo'], function(error, response, body) {
             res.send(
-                tflDataParser.parse(body)
+                tflDataParser.parsePlaces(body)
+            )
+        });
+    })
+
+    app.get('/tfl/journey', function(req, res) {
+        var data = tflGateway.getData(req.query['locFrom'], req.query['locTo'], function(error, response, body) {
+            res.send(
+                tflDataParser.parseJourney(body)
             )
         });
     })

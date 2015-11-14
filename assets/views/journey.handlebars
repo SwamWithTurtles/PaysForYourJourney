@@ -1,0 +1,27 @@
+<script data-main="scripts/journey" src="bower_components/requirejs/require.js"></script>
+
+
+<div class="container">
+
+    <h1>Journey</h1>
+
+
+    <div class="spinner" data-bind="if: waitingForData">SPINNER</div>
+
+    <div class="disambiguiation-content" data-bind="if: !waitingForData()"><br/>
+
+        <div data-bind="with: journey">
+            From: <span data-bind="text: from"></span><br/>
+            To: <span data-bind="text: to"></span>
+        </div>
+
+        <h2>Journeys</h2>
+
+        <div data-bind="foreach: journeys">
+            <b></b><span data-bind="text: duration"></span> minutes:</b>
+            <span data-bind="text: steps"></span>
+
+        </div>
+
+    </div>
+</div>
