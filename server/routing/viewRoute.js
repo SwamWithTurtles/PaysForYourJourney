@@ -3,8 +3,8 @@ var setUp = function(app) {
         response.render('index');
     });
 
-    app.get('/destination', function(request, response, next) {
-        response.render('destination');
+    app.get('/disambiguation', function(request, response, next) {
+        response.render('disambiguation');
     });
 
 

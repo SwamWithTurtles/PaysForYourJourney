@@ -12,6 +12,6 @@ require.config({
 });
 
 
-require(["ko", "viewModels/destination", "jquery"], function(ko, destVM, $) {
+require(["ko", "viewModels/disambiguation", "jquery"], function(ko, destVM, $) {
     ko.applyBindings(destVM);
 });
