@@ -1,6 +1,4 @@
-/*
-
-{
+var stubData = {
     "Response": {
     "Status": {
         "Code": "600",
@@ -105,4 +103,4 @@
 }
 }
 
-    */
+module.exports = stubData;
