@@ -23,12 +23,12 @@ if (process.env.NODE_ENV === 'production') {
     // Set the default layout and locate layouts and partials
     app.engine('handlebars', exphbs({
         defaultLayout: 'main',
-        layoutsDir: 'views/layouts/',
-        partialsDir: 'views/partials/'
+        layoutsDir: 'assets/views/layouts/',
+        partialsDir: 'assets/views/partials/'
     }));
 
     // Locate the views
-    app.set('views', __dirname + '/dist/views');
+    app.set('views', __dirname + '/dist/assets/views');
 
     // Locate the assets
     app.use(express.static(__dirname + '/dist/assets'));
@@ -37,12 +37,12 @@ if (process.env.NODE_ENV === 'production') {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
-        layoutsDir: 'views/layouts/',
-        partialsDir: 'views/partials/'
+        layoutsDir: 'assets/views/layouts/',
+        partialsDir: 'assets/views/partials/'
     }));
 
     // Locate the views
-    app.set('views', __dirname + '/views');
+    app.set('views', __dirname + '/assets/views');
 
     // Locate the assets
     app.use(express.static(__dirname + '/assets'));
