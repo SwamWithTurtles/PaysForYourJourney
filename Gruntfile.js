@@ -267,9 +267,6 @@ module.exports = function (grunt) {
         'sass',
         'useminPrepare',
         'imagemin',
-        'concat',
-        'cssmin',
-        'uglify',
         'copy:dist',
         'rev',
         'usemin'
