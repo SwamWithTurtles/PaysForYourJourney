@@ -12,6 +12,11 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
                 journey.visible = ko.observable(false);
 
                 journey.click = function() {
+                    if(journey.visible()) {
+                        journey.visible(false);
+                        return;
+                    }
+
                     _.forEach(data, function(j) {
                         j.visible(false);
                     });

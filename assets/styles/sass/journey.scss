@@ -8,14 +8,17 @@ body {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
 
+        background: #444;
+
     }
 
     .journey-container {
         margin: 0;
 
+        display: table-row;
+
         border: 1px white solid;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+        border-radius: 5px;
 
         .journey-duration {
             float: right;

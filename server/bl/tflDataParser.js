@@ -18,8 +18,14 @@ var extractPlaces = function(options) {
 
 var nicelyFormatted = function(legs) {
     return _.map(legs, function(leg) {
-        return (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : "Walk") + " to " + leg.arrivalPoint.commonName;
-    }).join(", ");
+        return {
+            destination: leg.arrivalPoint.commonName,
+            transport: (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : ""),
+            mode: (leg.mode ? leg.mode.name : "Walk")
+
+        };
+        ;
+    });
 }
 
 module.exports.parseJourney = function(dataString) {

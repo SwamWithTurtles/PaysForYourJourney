@@ -73,13 +73,14 @@ body .journey-steps {
   border: 1px white solid;
   border-top: 0;
   border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px; }
+  border-bottom-right-radius: 5px;
+  background: #444; }
 
 body .journey-container {
   margin: 0;
+  display: table-row;
   border: 1px white solid;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-radius: 5px; }
   body .journey-container .journey-duration {
     float: right;
     border-radius: 2px;
@@ -99,25 +100,6 @@ body .journey-container {
         cursor: pointer;
         text-decoration: underline;
         color: white; }
-
-.ToFromGroup {
-  padding: 20px 20px 20px 20px;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 15px; }
-
-.ToFromGroupHeader {
-  font-weight: bold;
-  font-size: 18px;
-  text-align: left; }
-
-.ToFromDisAmbList ul {
-  margin: 0px;
-  padding: 0px; }
-  .ToFromDisAmbList ul li {
-    list-style-type: none;
-    margin: 5px;
-    padding: 3px;
-    border: 1px solid #aaa; }
 
 /**
  * She’s all yours, cap’n... Begin importing your stuff here.
@@ -379,11 +361,7 @@ em {
   min-height: 100%;
   position: relative;
   top: 0px;
-  left: 0px;
-  text-align: left; }
-
-.spinner img {
-  padding-left: 230px; }
+  left: 0px; }
 
 /*------------------------------------*    $OVERRIDES
 \*------------------------------------*/
