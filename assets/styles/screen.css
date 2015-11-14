@@ -68,6 +68,38 @@ label {
 */
 /*------------------------------------*    $MIXINS
 \*------------------------------------*/
+body .journey-steps {
+  margin: 0;
+  border: 1px white solid;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; }
+
+body .journey-container {
+  margin: 0;
+  border: 1px white solid;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  body .journey-container .journey-duration {
+    float: right;
+    border-radius: 2px;
+    background-color: #366097;
+    display: table-cell;
+    margin: 3px; }
+    body .journey-container .journey-duration .minutes {
+      font-size: 200%;
+      font-weight: bolder; }
+  body .journey-container .left-container {
+    float: left;
+    display: table-cell; }
+    body .journey-container .left-container .more-details {
+      font-size: 80%;
+      color: #F7F7F7; }
+      body .journey-container .left-container .more-details:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: white; }
+
 /**
  * She’s all yours, cap’n... Begin importing your stuff here.
  */
