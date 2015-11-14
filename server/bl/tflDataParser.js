@@ -22,9 +22,7 @@ var nicelyFormatted = function(legs) {
             destination: leg.arrivalPoint.commonName,
             transport: (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : ""),
             mode: (leg.mode ? leg.mode.name : "Walk")
-
         };
-        ;
     });
 }
 
