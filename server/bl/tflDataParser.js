@@ -29,12 +29,12 @@ var nicelyFormatted = function(legs) {
 module.exports.parseJourney = function(dataString) {
     var data = JSON.parse(dataString);
 
-    return _.map(data.journeys, function(journey) {
+    return _.sortBy(_.map(data.journeys, function(journey) {
         return {
             duration: journey.duration,
             steps: nicelyFormatted(journey.legs)
         }
-    });
+    }), 'duration');
 }
 
 module.exports.parsePlaces = function(dataString) {
