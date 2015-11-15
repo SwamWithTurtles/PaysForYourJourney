@@ -109,20 +109,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Rev Config
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        'dist/assets/scripts/**/*.js',
-                        'dist/assets/styles/**/*.css',
-                        'dist/assets/images/**/*.{png,jpg,jpeg,gif,webp}',
-                        'dist/assets/styles/fonts/**/*.*'
-                    ]
-                }
-            }
-        },
-
         // Usemin Config
         useminPrepare: {
             options: {
@@ -268,7 +254,6 @@ module.exports = function (grunt) {
         'useminPrepare',
         'imagemin',
         'copy:dist',
-        'rev',
         'usemin'
     ]);
 
