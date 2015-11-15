@@ -25,8 +25,8 @@ define(["jquery"], function($) {
 
 
         //make them visible and lock the page to the correct size
-        $("#circleContainer").css("display", "block");
-        $("#circleContainer").css("width", pageWidth);
+        //$("#circleContainer").css("display", "block");
+        //$("#circleContainer").css("width", pageWidth);
 
         $("#circle1").css("display","block");
         $("#circle2").css("display","block");

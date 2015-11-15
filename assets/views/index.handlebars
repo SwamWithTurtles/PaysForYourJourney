@@ -58,20 +58,21 @@
             <div class="row" style="padding:5px">
             </div>
 
-            <input type="submit" style="width: 250px;" class="btn btn-me btn-info"/>
+            <input type="submit" style="width: 250px; font-weight: bold;"
+                   value="Find my routes" class="btn btn-me btn-info"/>
 
             <script>
                 setFromHome = function() {
                     $("#loc_from").val("Maple Avenue");
                 }
                 setFromWork = function() {
-                    $("#loc_from").val("Baker Street");
+                    $("#loc_from").val("Baker Street Underground");
                 }
                 setToHome = function() {
                     $("#loc_to").val("Maple Avenue");
                 }
                 setToWork = function() {
-                    $("#loc_to").val("Baker Street");
+                    $("#loc_to").val("Baker Street Underground");
                 }
             </script>
 
@@ -92,9 +93,21 @@
 
             <div class="row">
                 <form action="addItem" method="get">
-                    <input class="inputBoxOverrides col-xs-5" placeholder="Task" name="todo" aria-label="..." />
-                    <input class="inputBoxOverrides col-xs-5" placeholder="Location" name="location" aria-label="..." />
-                    <input type="submit" class="btn btn-sm btn-warning col-xs-2"/>
+                    <div class="col-xs-12">
+                    <div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
+                        <input style="width: 100%;" class="form-control inputBoxOverrides"
+                               placeholder=" New Task" name="todo" aria-label="..." />
+
+                        <div style="height: 5px; clear: both;">&nbsp;</div>
+
+                        <input style="width: 100%;" class="form-control inputBoxOverrides"
+                               placeholder=" Location" name="location" aria-label="..." />
+                    </div>
+                    <div class="col-xs-4" style="padding: 40px 0px 0px 15px;">
+                        <input style="width: 100%; font-weight: bold;" type="submit"
+                               value="Add New Task" class="btn btn-sm btn-info col-xs-2"/>
+                    </div>
+                    </div>
                 </form>
             </div>
 

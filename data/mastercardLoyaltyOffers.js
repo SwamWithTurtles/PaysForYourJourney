@@ -71,7 +71,7 @@ var stubData = {
             },
             {
                 "CurrencyCode": "GBP",
-                "Headline": "2 for 1 tickets on Sunday afternoon",
+                "Headline": "2 for 1 tickets as VUE cinema on Sunday afternoon",
                 "Language": "English",
                 "Merchant": {
                     "Category": "CINEMA",
