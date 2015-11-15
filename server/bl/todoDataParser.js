@@ -45,7 +45,7 @@ module.exports.populateTflData = function (journeys, callback) {
 
                 var closeOffers = _.filter(todos, function (item) {
                     return latLongDistanceCalculator.calculateDistance(
-                            {lat: "51.5076865", lon: "-0.2239196"},
+                            {lat: item[1].lat, lon: item[1].lon},
                             {lat: step.latitude, lon: step.longitude}
                         ) < 750;
                 });
