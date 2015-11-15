@@ -23,10 +23,13 @@ module.exports.populateTflData = function (journeys, callback) {
 
                 step.offers = _.map(closeOffers, function (offer) {
                     return ["Stop off at " + offer.Merchant.Name + "? " + offer.Headline]
-                })
-            })
+                });
+            });
+
+
         });
 
+        journeys = _.sortBy(journeys, function(j) {return j.duration;});
 
         callback(journeys);
     });
@@ -45,10 +48,10 @@ module.exports.detourJourneys = function (from, to, callback) {
                 var easiestJourney1 = _.min(parsedJourney1, function(c) {return c.duration;});
                 var easiestJourney2 = _.min(parsedJourney2, function(c) {return c.duration;});
 
-                var parsedJourney = {}//{a: easiestJourney1, b: easiestJourney2};
+                var parsedJourney = {};
                 parsedJourney.steps = _.union(easiestJourney1.steps, easiestJourney2.steps);
                 parsedJourney.headline = opp.Headline;
-                parsedJourney.merchant = opp.Merchant.Name;
+                parsedJourney.title = "via " + opp.Merchant.Name;
                 parsedJourney.duration = easiestJourney1.duration + easiestJourney2.duration;
                 answers.push(parsedJourney);
             });

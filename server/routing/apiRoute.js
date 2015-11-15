@@ -2,6 +2,8 @@ var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
 var wishListData = require('../../data/wishList');
 
+var _ = require('lodash');
+
 var mastercardDataParser = require('../bl/mastercardDataParser');
 
 var setUp = function(app) {
@@ -22,7 +24,11 @@ var setUp = function(app) {
     app.get('/tfl/journey', function(req, res) {
         var data = tflGateway.getData(req.query['locFrom'], req.query['locTo'], function(error, response, body) {
             var journeys = tflDataParser.parseJourney(body);
-            mastercardDataParser.populateTflData(journeys, res.send.bind(res));
+
+            var journey = _.sortBy(journeys, function(j) {return j.duration})[0];
+            journey.title = "Direct";
+
+            mastercardDataParser.populateTflData([journey], res.send.bind(res));
         });
     });
 
@@ -32,9 +38,12 @@ var setUp = function(app) {
 
         res.send(data);
     });
-    
+
     app.get('/tfl/detours', function(req, res) {
-        mastercardDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], res.send.bind(res));
+        mastercardDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
+            var journeys = mastercardDataParser.populateTflData(body, res.send.bind(res));
+
+        });
     });
 
 };

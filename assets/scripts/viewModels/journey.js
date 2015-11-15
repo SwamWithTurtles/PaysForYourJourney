@@ -6,40 +6,52 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     var waitingForData = ko.observable(true);
 
-    var getRoutes = function() {$.getJSON('/tfl/journey?locFrom=' + locFrom() + '&locTo=' + locTo(),
-        function(data) {
-            _.forEach(data, function(journey) {
-                journey.visible = ko.observable(false);
+    var populatePageWithRoutes = function(data) {
+        _.forEach(data, function (journey) {
+            journey.visible = ko.observable(false);
 
-                journey.click = function() {
-                    if(journey.visible()) {
-                        journey.visible(false);
-                        return;
-                    }
+            journey.click = function () {
+                if (journey.visible()) {
+                    journey.visible(false);
+                    return;
+                }
 
-                    _.forEach(data, function(j) {
-                        j.visible(false);
-                    });
+                _.forEach(data, function (j) {
+                    j.visible(false);
+                });
 
-                    journey.visible(true);
-                };
+                journey.visible(true);
+            };
 
-                _.forEach(journey.steps, function(step) {
-                    step.offersExpanded = ko.observable(false);
+            _.forEach(journey.steps, function (step) {
+                step.offersExpanded = ko.observable(false);
 
-                    step.expandOffers = function() {
-                        step.offersExpanded(true);
-                    }
-                })
+                step.expandOffers = function () {
+                    step.offersExpanded(true);
+                }
+            })
 
 
-            });
+        })
 
-            journeys(data);
-
-            waitingForData(false);
+        _.forEach(data, function (d) {
+            journeys.push(d)
         });
     };
+
+    (function() {$.getJSON('/tfl/journey?locFrom=' + locFrom() + '&locTo=' + locTo(),
+        function(data) {
+            populatePageWithRoutes(data);
+            waitingForData(false);
+        });
+    })();
+
+    (function() {$.getJSON('/tfl/detours?locFrom=' + locFrom() + '&locTo=' + locTo(),
+        function(data) {
+            populatePageWithRoutes(data);
+            waitingForData(false);
+        });
+    })();
 
     return {
         journey: {
@@ -49,11 +61,9 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
         journeys: journeys,
 
-        route: ko.computed(function() {
-            waitingForData(true);
-            if(locFrom() && locTo()) {
-                getRoutes()
-            }
+        sortedJourneys: ko.computed(function() {
+
+            return _.sortBy(journeys(), function(j) {return j.duration});
         }),
 
         waitingForData: waitingForData
