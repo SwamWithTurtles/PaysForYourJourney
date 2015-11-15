@@ -21,6 +21,11 @@ var setUp = function(app) {
         });
     });
 
+    app.get('/firebase/test', function(req, res) {
+        var write = require('../dao/firebase');
+        write.writeTodo("silly");
+    })
+
     app.get('/tfl/journey', function(req, res) {
         var data = tflGateway.getData(req.query['locFrom'], req.query['locTo'], function(error, response, body) {
             var journeys = tflDataParser.parseJourney(body);
