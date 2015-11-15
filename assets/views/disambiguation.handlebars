@@ -52,6 +52,9 @@
 
             <div  class="ToFromGroupHeader">
                 To: "<span data-bind="text: locTo"></span>"
+                <div data-bind="if: logToAmbiguous" style="float:right;">
+                    <img style="width: 40px;" src="images/multipleOptions.png" />
+                </div>
             </div>
 
             <div data-bind="if: locToKnown">
@@ -81,10 +84,10 @@
 
 
     <div class="destination" data-bind="if: ambiguityResolved">
-        <a class="btn btn-s btn-info" data-bind="attr: {href: link}">Find Journey</a>
+        <a class="btn btn-s btn-info" style="width: 250px" data-bind="attr: {href: link}">Plan Journey</a>
     </div>
 
-    <div style="padding: 3px;"></div>
+    <div style="padding: 10px;"></div>
 
     <div>
         <iframe width="400px" height="400px" frameborder="0" style="border: 0px;"
