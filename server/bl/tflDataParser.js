@@ -20,6 +20,8 @@ var nicelyFormatted = function(legs) {
     return _.map(legs, function(leg) {
         return {
             destination: leg.arrivalPoint.commonName,
+            latitude: leg.arrivalPoint.lat,
+            longitude: leg.arrivalPoint.lon,
             transport: (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : ""),
             mode: (leg.mode ? leg.mode.name : "Walk")
         };
