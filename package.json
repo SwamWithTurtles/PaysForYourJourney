@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
     "express": "~3.4.0",
     "express3-handlebars": "0.4.x",
     "firebase": "^2.3.1",
+    "grunt": "^0.4.5",
     "guid": "0.0.12",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
@@ -40,7 +42,7 @@
     "node": "0.12.1",
     "npm": "1.2.x"
   },
-    "scripts": {
-        "postinstall": "grunt build"
-    }
+  "scripts": {
+    "postinstall": "bower install & grunt build"
+  }
 }
