@@ -1,0 +1,12 @@
+{
+  "WishList": [
+    {
+      "ItemDesc": "Buy a shirt",
+      "SomethingElse": "123"
+    },
+    {
+      "ItemDesc": "Go to the bank",
+      "SomethingElse": "123"
+    }
+  ]
+}
