@@ -19,28 +19,76 @@
         <div data-bind="foreach: sortedJourneys">
 
             <div class="col-xs-12 journey-container" data-bind="css: {expanded: visible}">
-                <div class="left-container">
-                    <h3 class="journey-title" data-bind="text: title"></h3>
-                    <div class="more-details" data-bind="click: click">More Details</div>
-                </div>
-                <div class="journey-duration col-xs-3"><span class="minutes" data-bind="text: durationStatus"></span><br/> minutes</div>
-            </div>
-            <div class="col-xs-12 journey-steps" style="display: table" data-bind="visible: visible">
-                <!-- ko foreach: steps-->
-                <div class="col-xs-12" style="display: table-row; padding-bottom: 3px;">
 
-                    <div class="col-xs-4" style="display: table-cell"><span data-bind="text: transport"></span> (<span data-bind="text: mode"></span>)</div>
-                    <div class="col-xs-8    " style="display:table-cell">
-                        <span data-bind="text: destination"></span><br/>
+                <div class="col-xs-9 left-container" data-bind="click: click">
+                    <div class="journey-title" data-bind="text: title"></div>
+
+                    <div class="more-details">
+                        <!-- ko foreach: steps-->
+                            <!--ko if: mode == 'walking' -->
+                            <div class="tflwalksmall">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'bus' -->
+                            <div class="tflbussmall">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'tube' -->
+                            <div class="tfltubesmall">&nbsp;</div>
+                            <!-- /ko -->
+
+                            <!--ko if: offers.length >= 1 -->
+                                <div class="tflstar">&nbsp;</div>
+                            <!-- /ko -->
+
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div class="col-xs-3 journey-duration">
+                    <span class="minutes" data-bind="text: durationStatus"></span>
+                    <br/> minutes
+                </div>
+            </div>
+
+            <div class="col-xs-12 journey-steps" style="" data-bind="visible: visible">
+                <!-- ko foreach: steps-->
+                <div class="col-xs-12" style="padding-bottom: 3px;">
+
+                    <div class="col-xs-3" style="">
+                        <span data-bind="text: transport"></span>
+                    </div>
+
+                    <div class="col-xs-2" style="">
+                        <!--(<span data-bind="text: mode"></span>)-->
+
+                        <!--ko if: mode == 'walking' -->
+                            <div class="tflwalk">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'bus' -->
+                            <div class="tflbus">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'tube' -->
+                            <div class="tfltube">&nbsp;</div>
+                        <!-- /ko -->
+                    </div>
+
+                    <div class="col-xs-7" style="">
+                        <span data-bind="text: destination"></span>
+                        <br/>
+
                         <!--ko if: !offersExpanded() && offers.length > 1 -->
-                        <b><span style="font-color: red;" data-bind="click: expandOffers">You have <span data-bind="text: offers.length"></span> offers</span></b>
+                            <b><span style="font-color: red;" data-bind="click: expandOffers">
+                                You have <span data-bind="text: offers.length">
+                                </span> offers
+                            </span></b>
                         <!-- /ko -->
+
                         <!--ko if: offersExpanded || offers.length === 1 -->
-                        <!-- ko foreach: offers -->
-                        <b><span style="font-color: red;" data-bind="text: $data"></span></b><br/>
+                            <!-- ko foreach: offers -->
+                                <b><span style="font-color: red;" data-bind="text: $data"></span></b>
+                                <br/>
+                            <!-- /ko -->
                         <!-- /ko -->
-                        <!-- /ko -->
-                    </div><br/>
+                    </div>
                 </div>
                 <!-- /ko -->
             </div>
