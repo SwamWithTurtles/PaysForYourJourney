@@ -23,6 +23,16 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
                     journey.visible(true);
                 };
+
+                _.forEach(journey.steps, function(step) {
+                    step.offersExpanded = ko.observable(false);
+
+                    step.expandOffers = function() {
+                        step.offersExpanded(true);
+                    }
+                })
+
+
             });
 
             journeys(data);
