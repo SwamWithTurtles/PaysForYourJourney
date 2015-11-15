@@ -2,15 +2,20 @@ var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
 var wishListData = require('../../data/wishList');
 
+var bodyParser = require('body-parser')
+
+
 var _ = require('lodash');
 
 var mastercardDataParser = require('../bl/mastercardDataParser');
 
 var setUp = function(app) {
-    app.get('/api/sample', function (request, response) {
-        response.send({
-            hello: "World"
-        });
+
+
+    app.use(bodyParser.urlencoded());
+
+    app.get('/mastercard/offers', function(req, res) {
+        mastercardDataParser.rawDeals(res.send.bind(res));
     });
 
     app.get('/tfl/routes', function(req, res) {
@@ -19,6 +24,21 @@ var setUp = function(app) {
                 tflDataParser.parsePlaces(body)
             )
         });
+    });
+
+    app.post('/todo/add', function(req, res) {
+        var write = require('../dao/firebase');
+        var todoName = req.body.todo;
+        write.writeTodo(todoName);
+        res.statusCode = 302;
+        res.setHeader('Location', 'http://localhost:3000/');
+        res.end();
+    });
+
+    app.get('/todo/list', function(req, res) {
+        var firebase = require('../dao/firebase');
+
+        firebase.listTodos(res.send.bind(res));
     });
 
     app.get('/tfl/journey', function(req, res) {

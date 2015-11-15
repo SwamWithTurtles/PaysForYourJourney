@@ -34,19 +34,21 @@
 
     <br />
 
-    <form action="wishList">
 
         <div class="input-group col-xs-offset-2 col-xs-8">
 
             <div class="row" style="text-align: left; margin-bottom: 5px;">
-                <b>My wishlist:</b>
+                <b>My To Do List:</b>
             </div>
 
             <div class="row" style="padding:5px">
             </div>
 
             <div class="row">
-                <input class="form-control inputBoxOverrides" placeholder="Add a new item" name="loc_from" aria-label="..." />
+                <form action="todo/add" method="post">
+                    <input class="inputBoxOverrides col-xs-10" placeholder="Add a new item" name="todo" aria-label="..." />
+                    <input type="submit" class="btn btn-sm btn-warning col-xs-2"/>
+                </form>
             </div>
 
             <div class="row" style="padding:5px">
@@ -55,10 +57,10 @@
             <div class="row">
 
                 <div data-bind="if: !waitingForData()">
-                    <div class="wishlist" data-bind="with: wishes">
+                    <div class="wishlist">
                         <ul>
-                            <!-- ko foreach: WishList -->
-                            <li><span data-bind="text: ItemDesc"></span></li>
+                            <!-- ko foreach: items -->
+                            <li><span data-bind="text: itemDesc"></span></li>
                             <!-- /ko -->
                         </ul>
                     </div>
@@ -66,8 +68,6 @@
             </div>
 
         </div>
-
-    </form>
 
 
 

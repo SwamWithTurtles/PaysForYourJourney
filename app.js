@@ -6,6 +6,7 @@
 var express = require('express');
 var app = express();
 var port = 3000;
+var bodyParser = require('body-parser');
 
 /*
  * Use Handlebars for templating

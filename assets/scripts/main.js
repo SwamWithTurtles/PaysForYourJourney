@@ -13,14 +13,6 @@ require.config({
 
 require(["ko", "jquery", "layout", "viewModels/main"], function(ko, $, _layout, mainVM ) {
 
-    //var viewModel = {
-    //    hello: ko.observable()
-    //};
-    //
-    //$.getJSON("/api/sample", function(data) {
-    //    viewModel.hello(data.hello);
-    //});
-
     ko.applyBindings(mainVM);
 
 });
