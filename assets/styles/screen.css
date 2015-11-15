@@ -101,6 +101,25 @@ body .journey-container {
         text-decoration: underline;
         color: white; }
 
+.ToFromGroup {
+  padding: 20px 20px 20px 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 15px; }
+
+.ToFromGroupHeader {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left; }
+
+.ToFromDisAmbList ul {
+  margin: 0px;
+  padding: 0px; }
+  .ToFromDisAmbList ul li {
+    list-style-type: none;
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid #aaa; }
+
 /**
  * She’s all yours, cap’n... Begin importing your stuff here.
  */
@@ -361,7 +380,11 @@ em {
   min-height: 100%;
   position: relative;
   top: 0px;
-  left: 0px; }
+  left: 0px;
+  text-align: left; }
+
+.spinner img {
+  padding-left: 230px; }
 
 /*------------------------------------*    $OVERRIDES
 \*------------------------------------*/

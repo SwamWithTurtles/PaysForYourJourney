@@ -22,21 +22,19 @@ var nicelyFormatted = function(legs) {
             destination: leg.arrivalPoint.commonName,
             transport: (leg.routeOptions[0].name ? _.pluck(leg.routeOptions, 'name').join(" or ") : ""),
             mode: (leg.mode ? leg.mode.name : "Walk")
-
         };
-        ;
     });
 }
 
 module.exports.parseJourney = function(dataString) {
     var data = JSON.parse(dataString);
 
-    return _.map(data.journeys, function(journey) {
+    return _.sortBy(_.map(data.journeys, function(journey) {
         return {
             duration: journey.duration,
             steps: nicelyFormatted(journey.legs)
         }
-    });
+    }), 'duration');
 }
 
 module.exports.parsePlaces = function(dataString) {

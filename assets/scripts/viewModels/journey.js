@@ -22,7 +22,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
                     });
 
                     journey.visible(true);
-                }
+                };
             });
 
             journeys(data);

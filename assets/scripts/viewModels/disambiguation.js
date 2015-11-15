@@ -94,8 +94,8 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
             if(ambiguityResolved())
             {
                 return "https://www.google.com/maps/embed/v1/directions?key=AIzaSyAz9Y8MnpsC3FLlzjpDPRnZEp07Wvs_O3A"
-                    + "&origin=" + locFrom().replace(" ", "+")   //+ locFromLat() + "," + locFromLon()
-                    + "&destination=" + locTo().replace(" ","+") //+ locToLat() + "," + locToLon()
+                    + "&origin=" + locFrom().replace(" ", "+")
+                    + "&destination=" + locTo().replace(" ","+")
                     + "&mode=flying";
 
             }
