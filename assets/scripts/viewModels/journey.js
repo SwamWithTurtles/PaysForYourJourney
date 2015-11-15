@@ -46,6 +46,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
             directJourney(data[0].duration);
             data[0].durationStatus = data[0].duration;
+            data[0].color = ko.observable("#366097");
             populatePageWithRoutes(data);
             waitingForData(false);
         });
@@ -55,13 +56,21 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
         {$.getJSON(url,
             function(data) {
 
-                _.forEach(data, function(datum) {datum.durationStatus = ko.computed(function() {
+                _.forEach(data, function(datum) {
+                    datum.durationStatus = ko.computed(function() {
                     if(directJourney()) {
                         return "+" + (datum.duration - directJourney());
                     } else {
                         return datum.duration;
                     }
-                })});
+                    })
+
+                    datum.color = ko.computed(function() {
+                            if(!datum.durationStatus()) { return "#366097"; }
+                            return datum.durationStatus().indexOf("+") > -1 ? colorMap(datum.durationStatus()) : "#366097"
+                        }
+                    )
+                });
 
                 populatePageWithRoutes(data);
 
@@ -74,6 +83,19 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     getDetourJourneys('/tfl/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
     getDetourJourneys('/todo/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
 
+    var rgb = function(r, g, b) {
+        console.log(arguments);
+        return "#" + r.toString(16) + g.toString(16) + b.toString(16);
+    };
+
+    var colorMap = function(num) {
+        var percentage = (num)/60
+        percentage = (percentage < 0 ? 0 : (percentage > 100 ? 100 : percentage));
+        var midpoint = function(scale, bottom, top) {
+            return Math.ceil(bottom + ((top-bottom)*percentage));
+        }
+        return rgb(midpoint(percentage, 252, 239), midpoint(percentage, 184, 54), midpoint(percentage, 54, 39));
+    };
 
     return {
         journey: {
