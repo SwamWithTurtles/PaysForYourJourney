@@ -27,6 +27,9 @@ body {
             min-height: 100%;
 
             background-color: #366097;
+            opacity: 0.85;
+
+            border-radius: 0px 0px 0px 20px;
 
             .minutes {
                 font-size: 200%;
@@ -71,15 +74,31 @@ body {
     .tfltube {
         height: 32px;
         width: 32px;
-        background: url("../images/tfl_vsprite.png") -32px -128px;
+        background: url("../images/tfl_vsprite.png") 0 -416px;
         float: left;
     }
 
 
     .tflstar {
+          height: 32px;
+          width: 32px;
+          background: url("../images/tfl_vsprite.png") 0 -1184px;
+          float: left;
+      }
+
+    .tflstarClose {
         height: 32px;
         width: 32px;
         background: url("../images/tfl_vsprite.png") 0 -1184px;
+        float: left;
+        margin-top: -7px;
+        margin-left: -13px;
+    }
+
+    .tflrail {
+        height: 32px;
+        width: 32px;
+        background: url("../images/tfl_vsprite.png") -32px -352px;
         float: left;
     }
 

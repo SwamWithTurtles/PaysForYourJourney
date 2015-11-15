@@ -34,9 +34,12 @@
                             <!--ko if: mode == 'tube' -->
                             <div class="tfltube">&nbsp;</div>
                             <!-- /ko -->
+                            <!--ko if: mode == 'national-rail' -->
+                            <div class="tflrail">&nbsp;</div>
+                            <!-- /ko -->
 
                             <!--ko if: offers.length >= 1 -->
-                                <div class="tflstar">&nbsp;</div>
+                                <div class="tflstarClose">&nbsp;</div>
                             <!-- /ko -->
 
                         <!-- /ko -->
@@ -68,6 +71,9 @@
                         <!-- /ko -->
                         <!--ko if: mode == 'tube' -->
                             <div class="tfltube">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'national-rail' -->
+                        <div class="tflrail">&nbsp;</div>
                         <!-- /ko -->
 
                         <!--ko if: offers.length >= 1 -->
