@@ -84,17 +84,26 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     getDetourJourneys('/todo/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
 
     var rgb = function(r, g, b) {
-        console.log(arguments);
         return "#" + r.toString(16) + g.toString(16) + b.toString(16);
     };
 
     var colorMap = function(num) {
-        var percentage = (num)/60
-        percentage = (percentage < 0 ? 0 : (percentage > 100 ? 100 : percentage));
         var midpoint = function(scale, bottom, top) {
             return Math.ceil(bottom + ((top-bottom)*percentage));
         }
-        return rgb(midpoint(percentage, 252, 239), midpoint(percentage, 184, 54), midpoint(percentage, 54, 39));
+
+        if(num < 30) {
+            var percentage = (num)/30;
+            percentage = (percentage < 0 ? 0 : (percentage > 100 ? 100 : percentage));
+            return rgb(midpoint(percentage, 110, 252), midpoint(percentage, 200, 184), midpoint(percentage, 27, 54));
+        } else {
+            var percentage = (num - 30)/60;
+            percentage = (percentage < 0 ? 0 : (percentage > 100 ? 100 : percentage));
+            return rgb(midpoint(percentage, 252, 239), midpoint(percentage, 184, 54), midpoint(percentage, 54, 39));
+        }
+
+
+
     };
 
     return {

@@ -90,16 +90,21 @@
                         <br/>
 
                         <!--ko if: !offersExpanded() && offers.length > 1 -->
-                            <b><span style="" data-bind="click: expandOffers">
+                        <div class="text-danger bg-danger" style="padding: 4px;">
+                            <small>
+                                <span data-bind="click: expandOffers">
                                 You have <span data-bind="text: offers.length">
-                                </span> offers
-                            </span></b>
+                                </span> offers</span>
+                            </small>
+                            </div>
                         <!-- /ko -->
 
                         <!--ko if: offersExpanded() || offers.length === 1 -->
                             <!-- ko foreach: offers -->
-                                <b>#<span style="" data-bind="text: name"></span></b>
+                        <div class="text-danger bg-danger" style="padding: 4px;">
+                                <small><span data-bind="text: name"></span></small>
                                 <br/>
+                            </div>
                             <!-- /ko -->
                         <!-- /ko -->
                     </div>
