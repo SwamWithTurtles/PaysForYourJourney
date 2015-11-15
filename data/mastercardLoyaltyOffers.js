@@ -98,6 +98,36 @@ var stubData = {
                 "Discount": "20.0",
                 "DiscountType": "PERCENTAGE",
                 "Price": "0.0"
+            },
+            {
+                "CurrencyCode": "GBP",
+                "Headline": "A Byron burger and beer for £10",
+                "Language": "English",
+                "Merchant": {
+                    "Category": "RESTURANT",
+                    "MerchantDistance": "0.0",
+                    "Name": "Byron Burgers",
+                    "StoreLocatorUrl": "http://www.example.com/locations/",
+                    "WebsiteUrl": "www.Byran.com",
+                    "Addresses": {
+                        "Latitude": "51.5173654",
+                        "Longitude": "-0.1206424",
+                        "Street": "114 High Holborn, London WC1V 6JQ"
+                    }
+                },
+                "MerchantImageURL": "http://www.myvue.com/images/vue_logo_header.png",
+                "OfferId": "c7dcfca7-cf35-36b0-9e67-d4f363d643e5",
+                "OfferSource": "Personalized Loyalty Offers",
+                "OfferType": "POSTPAIDCREDIT",
+                "ProductName": "merchandise",
+                "RedemptionMode": "CASH",
+                "ShortDescription": "Proper hamburgers made from carefully-sourced British beef, freshly prepared and cooked to order, to eat in or to take away.",
+                "EventEndDate": "2015-12-01",
+                "EventStartDate": "2015-02-28",
+                "ActiveSc": "AVAILABLE",
+                "Discount": "20.0",
+                "DiscountType": "PERCENTAGE",
+                "Price": "0.0"
             }
         ]
     }
