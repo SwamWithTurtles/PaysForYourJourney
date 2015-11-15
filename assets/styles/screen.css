@@ -68,24 +68,12 @@ label {
 */
 /*------------------------------------*    $MIXINS
 \*------------------------------------*/
-body .journey-steps {
-  margin: 0;
-  border: 1px white solid;
-  border-top: 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: #444; }
-
 body .journey-container {
-  margin: 0;
-  display: table-row;
-  border: 1px white solid;
-  border-radius: 5px; }
+  margin: 4px 0px 4px 0px;
+  border: 1px white solid; }
   body .journey-container .journey-duration {
     float: right;
-    border-radius: 2px;
     background-color: #366097;
-    display: table-cell;
     margin: 3px; }
     body .journey-container .journey-duration .minutes {
       font-size: 200%;
@@ -100,6 +88,10 @@ body .journey-container {
         cursor: pointer;
         text-decoration: underline;
         color: white; }
+
+body .journey-steps {
+  margin: 0px;
+  background-color: rgba(255, 255, 255, 0.3); }
 
 .ToFromGroup {
   padding: 20px 20px 20px 20px;
@@ -483,10 +475,11 @@ input[type=password]:focus {
   -webkit-border-radius: 150px;
   border-radius: 150px;
   opacity: 0.6;
-  position: absolute;
   top: 150px;
-  left: -10000px;
-  z-index: -9999; }
+  left: 0px;
+  z-index: -9999;
+  display: none;
+  position: fixed; }
 
 #circle2 {
   width: 300px;
@@ -496,19 +489,20 @@ input[type=password]:focus {
   -webkit-border-radius: 150px;
   border-radius: 150px;
   opacity: 0.6;
-  position: absolute;
   top: 150px;
-  left: -10000px;
-  z-index: -9999; }
+  left: 0px;
+  z-index: -9999;
+  display: none;
+  position: fixed; }
 
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
   max-width: 600px;
-  /* or 950px */ }
+  overflow: hidden; }
 
 .container {
   margin-right: auto;
   margin-left: auto;
   max-width: 600px;
-  /* or 950px */ }
+  overflow: hidden; }

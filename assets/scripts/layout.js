@@ -23,6 +23,15 @@ define(["jquery"], function($) {
         var c1LeftTarget = (pageWidth / 2) - circleWidth / 2 - 90;
         var c2LeftTarget = ($(window).width() / 2) - circleWidth/2 + 90;
 
+
+        //make them visible and lock the page to the correct size
+        $("#circleContainer").css("display", "block");
+        $("#circleContainer").css("width", pageWidth);
+
+        $("#circle1").css("display","block");
+        $("#circle2").css("display","block");
+
+        //Don't animate except on homepage
         if (window.location.href.toString().split(window.location.host)[1] == '/'){
             doAnimate = true;
         }

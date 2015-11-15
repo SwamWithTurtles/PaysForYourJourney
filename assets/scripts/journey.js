@@ -12,6 +12,6 @@ require.config({
 });
 
 
-require(["ko", "viewModels/journey", "jquery"], function(ko, journeyVM, $) {
+require(["ko", "viewModels/journey", "jquery", "layout"], function(ko, journeyVM, $, _layout) {
     ko.applyBindings(journeyVM);
 });

@@ -1,32 +1,16 @@
 body {
 
-    .journey-steps {
-
-        margin: 0;
-        border: 1px white solid;
-        border-top: 0;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-
-        background: #444;
-
-    }
-
     .journey-container {
-        margin: 0;
 
-        display: table-row;
+        margin: 4px 0px 4px 0px;
 
         border: 1px white solid;
-        border-radius: 5px;
 
         .journey-duration {
             float: right;
 
-            border-radius: 2px;
             background-color: #366097;
 
-            display: table-cell;
             margin: 3px;
 
             .minutes {
@@ -52,6 +36,13 @@ body {
         }
 
 
+
+    }
+
+    .journey-steps {
+
+        margin: 0px;
+        background-color: rgba(255,255,255,0.3);
 
     }
 
