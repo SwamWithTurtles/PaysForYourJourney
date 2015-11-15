@@ -37,6 +37,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function (ko, _, $, 
         locAmbiguous: locAmbiguous,
         locOptions: locOptions,
         onFormComplete: function() {
+            console.log(locLon(), locLat());
            $.ajax({
             url: "/todo/add",
             data: JSON.stringify({
