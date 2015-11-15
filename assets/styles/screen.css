@@ -94,34 +94,25 @@ body .journey-steps {
   background-color: rgba(255, 255, 255, 0.35);
   border-radius: 0px 0px 20px 20px; }
 
+body .journey-step-destination {
+  text-align: left; }
+
+body .journey-step-transport {
+  text-align: right; }
+
 body .tflwalk {
-  height: 32px;
-  width: 32px;
-  background: url("../images/tfl_vsprite.png") -32px -256px; }
-
-body .tflbus {
-  height: 32px;
-  width: 32px;
-  background: url("../images/tfl_vsprite.png") -32px -320px; }
-
-body .tfltube {
-  height: 32px;
-  width: 32px;
-  background: url("../images/tfl_vsprite.png") -32px -128px; }
-
-body .tflwalksmall {
   height: 32px;
   width: 32px;
   background: url("../images/tfl_vsprite.png") -32px -256px;
   float: left; }
 
-body .tflbussmall {
+body .tflbus {
   height: 32px;
   width: 32px;
   background: url("../images/tfl_vsprite.png") -32px -320px;
   float: left; }
 
-body .tfltubesmall {
+body .tfltube {
   height: 32px;
   width: 32px;
   background: url("../images/tfl_vsprite.png") -32px -128px;
@@ -132,6 +123,9 @@ body .tflstar {
   width: 32px;
   background: url("../images/tfl_vsprite.png") 0 -1184px;
   float: left; }
+
+body .methodicons {
+  padding: 0px 0px 0px 0px; }
 
 .ToFromGroup {
   padding: 20px 20px 20px 20px;

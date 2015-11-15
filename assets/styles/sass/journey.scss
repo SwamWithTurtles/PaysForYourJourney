@@ -18,7 +18,6 @@ body {
             .more-details {
                 clear: both;
                 float: left;
-
             }
         }
 
@@ -43,50 +42,49 @@ body {
         border-radius: 0px 0px 20px 20px;
     }
 
+
+
+    .journey-step-destination {
+        text-align: left;
+    }
+
+    .journey-step-transport {
+        text-align: right;
+    }
+
+
+
     .tflwalk {
         height: 32px;
         width: 32px;
         background: url("../images/tfl_vsprite.png") -32px -256px;
+        float: left;
     }
 
     .tflbus {
         height: 32px;
         width: 32px;
         background: url("../images/tfl_vsprite.png") -32px -320px;
+        float: left;
     }
 
     .tfltube {
         height: 32px;
         width: 32px;
         background: url("../images/tfl_vsprite.png") -32px -128px;
-    }
-
-    .tflwalksmall {
-        height: 32px;
-        width: 32px;
-        background: url("../images/tfl_vsprite.png") -32px -256px;
         float: left;
     }
 
-    .tflbussmall {
-        height: 32px;
-        width: 32px;
-        background: url("../images/tfl_vsprite.png") -32px -320px;
-        float: left;
-    }
-
-    .tfltubesmall {
-        height: 32px;
-        width: 32px;
-        background: url("../images/tfl_vsprite.png") -32px -128px;
-        float: left;
-    }
 
     .tflstar {
         height: 32px;
         width: 32px;
         background: url("../images/tfl_vsprite.png") 0 -1184px;
         float: left;
+    }
+
+    .methodicons {
+        padding: 0px 0px 0px 0px;
     }
 
 }
