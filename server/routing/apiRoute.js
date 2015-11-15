@@ -74,7 +74,7 @@ var setUp = function(app) {
     app.get('/todo/detours', function(req, res) {
         todoDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
             mastercardDataParser.populateTflData(body,
-                function(x) {todoDataParser.populateTflData(x, res.send.bind(res))}
+                function(x) {console.log(x); todoDataParser.populateTflData(x, res.send.bind(res))}
             );
         });
     })
