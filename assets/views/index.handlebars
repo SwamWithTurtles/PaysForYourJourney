@@ -52,6 +52,20 @@
 
             <div class="row">
                 [[[[Items in the wish list]]]]
+
+                <span data-bind="text: testVar"></span>
+
+                <br /><br />
+                TEST:
+                <div data-bind="if: !waitingForData()">
+                    <div data-bind="with: wishes">
+                        <ul>
+                            <!-- ko foreach: WishList -->
+                            <li><span data-bind="text: ItemDesc"></span></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
             </div>
 
         </div>

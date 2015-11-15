@@ -1,5 +1,6 @@
 var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
+var wishListData = require('../../data/wishList');
 
 var mastercardDataParser = require('../bl/mastercardDataParser');
 
@@ -24,6 +25,14 @@ var setUp = function(app) {
             mastercardDataParser.populateTflData(journeys, res.send.bind(res));
         });
     });
+
+    app.get('/wishlist/wishes', function(req,res) {
+
+        var data = wishListData();
+
+        res.send(data);
+    });
+
 };
 
 module.exports.setUp = setUp;

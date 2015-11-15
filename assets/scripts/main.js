@@ -1,7 +1,8 @@
 require.config({
     paths: {
         'jquery': "../bower_components/jquery/dist/jquery.min",
-        'ko': "../bower_components/knockout/dist/knockout"
+        'ko': "../bower_components/knockout/dist/knockout",
+        'lodash': "../bower_components/lodash/lodash.min"
     },
     shim: {
         'jquery': {
@@ -10,16 +11,16 @@ require.config({
     }
 });
 
-require(["ko", "jquery","layout"], function(ko, $, _layout ) {
+require(["ko", "jquery", "layout", "viewModels/main"], function(ko, $, _layout, mainVM ) {
 
-    var viewModel = {
-        hello: ko.observable()
-    };
+    //var viewModel = {
+    //    hello: ko.observable()
+    //};
+    //
+    //$.getJSON("/api/sample", function(data) {
+    //    viewModel.hello(data.hello);
+    //});
 
-    $.getJSON("/api/sample", function(data) {
-        viewModel.hello(data.hello);
-    });
-
-    ko.applyBindings(viewModel);
+    ko.applyBindings(mainVM);
 
 });
