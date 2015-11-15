@@ -102,6 +102,15 @@ body {
         float: left;
     }
 
+    .tflAdd {
+        height: 32px;
+        width: 32px;
+        background: url("../images/tfl_vsprite.png") -32px -704px;
+        float: left;
+        margin-top: -7px;
+        margin-left: -13px;
+    }
+
     .methodicons {
         padding: 0px 0px 0px 0px;
     }
