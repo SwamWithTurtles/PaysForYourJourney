@@ -43,6 +43,6 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "postinstall": "bower install & grunt build"
+    "postinstall": "bower install && grunt build"
   }
 }
