@@ -6,15 +6,11 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     var waitingForData = ko.observable(true);
 
-    var getWishes = function() {$.getJSON('/wishlist/wishes',
+    var getWishes = function() {$.getJSON('/todo/list',
         function(data) {
-
-            wishes(data);
-
-            console.log(wishes());
-
-            testVar("AGH");
-
+            var formattedData = _.map(data.items, function(d) {return d[1]});
+            wishes(formattedData);
+            console.log(formattedData);
             waitingForData(false);
         });
     };
@@ -25,7 +21,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
         testVar: testVar,
 
-        wishes: wishes,
+        items: wishes,
 
         waitingForData: waitingForData
 

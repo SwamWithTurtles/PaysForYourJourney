@@ -2,11 +2,18 @@ var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
 var wishListData = require('../../data/wishList');
 
+var bodyParser = require('body-parser')
+
+
 var _ = require('lodash');
 
 var mastercardDataParser = require('../bl/mastercardDataParser');
 
 var setUp = function(app) {
+
+
+    app.use(bodyParser.urlencoded());
+
     app.get('/api/sample', function (request, response) {
         response.send({
             hello: "World"
@@ -21,10 +28,20 @@ var setUp = function(app) {
         });
     });
 
-    app.get('/firebase/test', function(req, res) {
+    app.post('/todo/add', function(req, res) {
         var write = require('../dao/firebase');
-        write.writeTodo("silly");
-    })
+        var todoName = req.body.todo;
+        write.writeTodo(todoName);
+        res.statusCode = 302;
+        res.setHeader('Location', 'http://localhost:3000/');
+        res.end();
+    });
+
+    app.get('/todo/list', function(req, res) {
+        var firebase = require('../dao/firebase');
+
+        firebase.listTodos(res.send.bind(res));
+    });
 
     app.get('/tfl/journey', function(req, res) {
         var data = tflGateway.getData(req.query['locFrom'], req.query['locTo'], function(error, response, body) {
