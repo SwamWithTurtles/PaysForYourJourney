@@ -41,27 +41,34 @@ module.exports.populateTflData = function (journeys, callback) {
     Firebase.listTodos(function (todoList) {
         var todos = todoList.items;
         _.forEach(journeys, function (j) {
-            _.forEach(j.steps, function (step) {
-
-                var closeOffers = _.filter(todos, function (item) {
-
+            _.forEach(todos, function(item) {
+                var closeEnoughSteps = _.filter(j.steps, function(step) {
                     var x = latLongDistanceCalculator.calculateDistance(
-                            {lat: item[1].lat, lon: item[1].lon},
-                            {lat: step.latitude, lon: step.longitude}
-                        );
+                        {lat: item[1].lat, lon: item[1].lon},
+                        {lat: step.latitude, lon: step.longitude}
+                    );
                     return x < 750;
                 });
 
-                _.forEach(_.map(closeOffers, function (item) {
-                    return {name: "Stop off at " + item[1].location + "? " + item[1].itemDesc, isMastercard: false }
-                }), function (closeOffer) {
-                    closeOffer.isMastercard = false;
-                    if (!step.offers) {
-                        step.offers = [];
-                    }
-                    step.offers.push(closeOffer)
-                });
+                if(closeEnoughSteps.length) {
+                    var luckyStep = _.sortBy(closeEnoughSteps, function (step) {
+                        return latLongDistanceCalculator.calculateDistance(
+                            {lat: item[1].lat, lon: item[1].lon},
+                            {lat: step.latitude, lon: step.longitude}
+                        );
+                    })[0];
 
+                    if(!luckyStep.offers) {luckyStep.offers = [];}
+
+                    luckyStep.offers.push(
+                        {
+                            name: "Stop off at " + item[1].location + "? " + item[1].itemDesc,
+                            isMastercard: false
+                        });
+                }
+            });
+
+            _.forEach(j.steps, function(step) {
                 if (!step.offers) {
                     step.offers = [];
                 }

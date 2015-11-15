@@ -34,7 +34,7 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
             })
 
 
-        })
+        });
 
         _.forEach(data, function (d) {
             journeys.push(d)
