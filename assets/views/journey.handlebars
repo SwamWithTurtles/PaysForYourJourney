@@ -17,11 +17,11 @@
             To: <span data-bind="text: to"></span>
         </div>
 
-        <div data-bind="with: journeys()[0]">
+        <div data-bind="foreach: sortedJourneys">
 
             <div class="col-xs-12 journey-container" data-bind="css: {expanded: visible}">
                 <div class="left-container">
-                    <h3 class="journey-title">Direct</h3>
+                    <h3 class="journey-title" data-bind="text: title"></h3>
                     <div class="more-details" data-bind="click: click">More Details</div>
                 </div>
                 <div class="journey-duration col-xs-3"><span class="minutes" data-bind="text: duration"></span><br/> minutes</div>
@@ -43,7 +43,6 @@
                         <!-- /ko -->
                     </div><br/>
                 </div>
-
                 <!-- /ko -->
             </div>
 
