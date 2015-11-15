@@ -84,7 +84,6 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
     getDetourJourneys('/todo/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
 
     var rgb = function(r, g, b) {
-        console.log(arguments);
         return "#" + r.toString(16) + g.toString(16) + b.toString(16);
     };
 

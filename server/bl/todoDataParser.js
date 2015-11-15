@@ -49,9 +49,6 @@ module.exports.populateTflData = function (journeys, callback) {
                             {lat: item[1].lat, lon: item[1].lon},
                             {lat: step.latitude, lon: step.longitude}
                         );
-
-                    console.log(item, step, x);
-
                     return x < 750;
                 });
 
