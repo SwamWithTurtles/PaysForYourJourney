@@ -51,41 +51,29 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
         });
     })();
 
-    (function() {$.getJSON('/tfl/detours?locFrom=' + locFrom() + '&locTo=' + locTo(),
-        function(data) {
+    var getDetourJourneys = function(url) {
+        {$.getJSON(url,
+            function(data) {
 
-            _.forEach(data, function(datum) {datum.durationStatus = ko.computed(function() {
-                if(directJourney()) {
-                    return "+" + (datum.duration - directJourney());
-                } else {
-                    return datum.duration;
-                }
-            })});
+                _.forEach(data, function(datum) {datum.durationStatus = ko.computed(function() {
+                    if(directJourney()) {
+                        return "+" + (datum.duration - directJourney());
+                    } else {
+                        return datum.duration;
+                    }
+                })});
 
-            populatePageWithRoutes(data);
-
-
-            waitingForData(false);
-        });
-    })();
-
-    (function() {$.getJSON('/todo/detours?locFrom=' + locFrom() + '&locTo=' + locTo(),
-        function(data) {
-
-            _.forEach(data, function(datum) {datum.durationStatus = ko.computed(function() {
-                if(directJourney()) {
-                    return "+" + (datum.duration - directJourney());
-                } else {
-                    return datum.duration;
-                }
-            })});
-
-            populatePageWithRoutes(data);
+                populatePageWithRoutes(data);
 
 
-            waitingForData(false);
-        });
-    })();
+                waitingForData(false);
+            });
+        }
+    };
+
+    getDetourJourneys('/tfl/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
+    getDetourJourneys('/todo/detours?locFrom=' + locFrom() + '&locTo=' + locTo())
+
 
     return {
         journey: {
