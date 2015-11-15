@@ -6,6 +6,8 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     var waitingForData = ko.observable(true);
 
+    var directJourney = ko.observable();
+
     var populatePageWithRoutes = function(data) {
         _.forEach(data, function (journey) {
             journey.visible = ko.observable(false);
@@ -41,6 +43,9 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     (function() {$.getJSON('/tfl/journey?locFrom=' + locFrom() + '&locTo=' + locTo(),
         function(data) {
+
+            directJourney(data[0].duration);
+            data[0].durationStatus = data[0].duration;
             populatePageWithRoutes(data);
             waitingForData(false);
         });
@@ -48,7 +53,18 @@ define(['ko', 'lodash', 'jquery', 'util/queryParamReader'], function(ko, _, $, q
 
     (function() {$.getJSON('/tfl/detours?locFrom=' + locFrom() + '&locTo=' + locTo(),
         function(data) {
+
+            _.forEach(data, function(datum) {datum.durationStatus = ko.computed(function() {
+                if(directJourney()) {
+                    return "+" + (datum.duration - directJourney());
+                } else {
+                    return datum.duration;
+                }
+            })});
+
             populatePageWithRoutes(data);
+
+
             waitingForData(false);
         });
     })();
