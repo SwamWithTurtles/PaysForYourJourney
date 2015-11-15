@@ -33,3 +33,22 @@ module.exports.getDataVia = function(locFrom, locTo, via, callback) {
 
     return deferred.promise;
 }
+
+module.exports.getDataViaTodo = function(locFrom, locTo, via, callback) {
+    var deferred  = Q.defer();
+
+
+    var url = tflApiUri(locFrom, via);
+    var url2 = tflApiUri(via, locTo);
+    request(url, function(error, response, leg1) {
+
+        request(url2, function(error, response, leg2) {
+            callback(leg1, leg2);
+
+            return deferred.resolve();
+        });
+
+    });
+
+    return deferred.promise;
+}
