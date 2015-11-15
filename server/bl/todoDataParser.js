@@ -44,10 +44,15 @@ module.exports.populateTflData = function (journeys, callback) {
             _.forEach(j.steps, function (step) {
 
                 var closeOffers = _.filter(todos, function (item) {
-                    return latLongDistanceCalculator.calculateDistance(
+
+                    var x = latLongDistanceCalculator.calculateDistance(
                             {lat: item[1].lat, lon: item[1].lon},
                             {lat: step.latitude, lon: step.longitude}
-                        ) < 750;
+                        );
+
+                    console.log(item, step, x);
+
+                    return x < 750;
                 });
 
                 _.forEach(_.map(closeOffers, function (item) {
