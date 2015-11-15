@@ -7,6 +7,9 @@ var setUp = function(app) {
         response.render('disambiguation');
     });
 
+    app.get('/addItem', function(request, response, next) {
+        response.render('addItem');
+    });
 
     app.get('/journey', function(request, response, next) {
         response.render('journey');

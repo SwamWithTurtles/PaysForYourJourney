@@ -1,0 +1,49 @@
+<script data-main="scripts/addItem" src="bower_components/requirejs/require.js"></script>
+
+
+<div class="container">
+
+    <h2>Adding To Do</h2>
+
+    <div>You are currently adding <b><span data-bind="text: task"></span></b></div>
+
+    <div class="col-xs-10 col-offset-1 disambiguation-content">
+        <br>
+
+        <div class="ToFromGroup">
+
+            <div class="ToFromGroupHeader">
+                Location: <span data-bind="text: loc"></span>
+                <div data-bind="if: locAmbiguous" style="float:right;">
+                    <img style="width: 40px;" src="images/multipleOptions.png" />
+                </div>
+            </div>
+
+            <div data-bind="if: locKnown">
+                <div data-bind="if: locAmbiguous">
+
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <b>Multiple possible locations...</b> Do you mean?
+                    </div>
+
+                    <div class="ToFromDisAmbList">
+                        <ul>
+                            <!-- ko foreach: locOptions -->
+                            <li data-bind="text: name, click: click"></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div data-bind="if: !locKnown()">
+                Cannot find a match for this location.
+            </div>
+            <div data-bind="if: !locAmbiguous()">
+                <input type="button" data-bind="click: onFormComplete" value="Add Item" class="btn btn-warning"/>
+            </div>
+        </div>
+
+    </div>
+
+</div>

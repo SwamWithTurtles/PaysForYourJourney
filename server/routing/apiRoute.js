@@ -1,6 +1,5 @@
 var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
-var wishListData = require('../../data/wishList');
 
 var bodyParser = require('body-parser')
 
@@ -12,7 +11,7 @@ var mastercardDataParser = require('../bl/mastercardDataParser');
 var setUp = function(app) {
 
 
-    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.json());
 
     app.get('/mastercard/offers', function(req, res) {
         mastercardDataParser.rawDeals(res.send.bind(res));
@@ -26,12 +25,19 @@ var setUp = function(app) {
         });
     });
 
+    app.get('/tfl/ambiguity', function(req, res) {
+        var data = tflGateway.getData("NW51TL", req.query['loc'], function(error, response, body) {
+            res.send(
+                tflDataParser.parseAmbiguity(body)
+            )
+        })
+    });
+
     app.post('/todo/add', function(req, res) {
         var write = require('../dao/firebase');
-        var todoName = req.body.todo;
-        write.writeTodo(todoName);
-        res.statusCode = 302;
-        res.setHeader('Location', 'http://localhost:3000/');
+        write.writeTodo(req.body);
+
+        res.statusCode = 200;
         res.end();
     });
 
@@ -50,13 +56,6 @@ var setUp = function(app) {
 
             mastercardDataParser.populateTflData([journey], res.send.bind(res));
         });
-    });
-
-    app.get('/wishlist/wishes', function(req,res) {
-
-        var data = wishListData();
-
-        res.send(data);
     });
 
     app.get('/tfl/detours', function(req, res) {
