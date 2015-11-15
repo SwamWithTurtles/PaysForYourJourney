@@ -1,6 +1,8 @@
 var tflGateway = require('../gateway/tflGateway');
 var tflDataParser = require('../bl/tflDataParser');
 
+var todoDataParser = require('../bl/todoDataParser');
+
 var bodyParser = require('body-parser')
 
 
@@ -60,11 +62,15 @@ var setUp = function(app) {
 
     app.get('/tfl/detours', function(req, res) {
         mastercardDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
-            var journeys = mastercardDataParser.populateTflData(body, res.send.bind(res));
-
+            mastercardDataParser.populateTflData(body, res.send.bind(res));
         });
     });
 
+    app.get('/todo/detours', function(req, res) {
+        todoDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
+            mastercardDataParser.populateTflData(body, res.send.bind(res));
+        });
+    })
 
 
 };
