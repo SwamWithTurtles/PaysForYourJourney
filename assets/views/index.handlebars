@@ -45,8 +45,9 @@
             </div>
 
             <div class="row">
-                <form action="todo/add" method="post">
-                    <input class="inputBoxOverrides col-xs-10" placeholder="Add a new item" name="todo" aria-label="..." />
+                <form action="addItem" method="get">
+                    <input class="inputBoxOverrides col-xs-5" placeholder="Task" name="todo" aria-label="..." />
+                    <input class="inputBoxOverrides col-xs-5" placeholder="Location" name="location" aria-label="..." />
                     <input type="submit" class="btn btn-sm btn-warning col-xs-2"/>
                 </form>
             </div>

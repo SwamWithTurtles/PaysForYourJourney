@@ -28,6 +28,12 @@ var nicelyFormatted = function(legs) {
     });
 }
 
+module.exports.parseAmbiguity = function(dataString) {
+    var data = JSON.parse(dataString);
+
+    return extractPlaces(data.toLocationDisambiguation);
+}
+
 module.exports.parseJourney = function(dataString) {
     var data = JSON.parse(dataString);
 

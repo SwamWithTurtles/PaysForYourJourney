@@ -8,7 +8,7 @@ var myFirebaseRef = new Firebase("https://blinding-heat-2968.firebaseio.com/");
 var writeTodo = function(todo) {
     var guid = Guid.raw();
     var emptyObj = {};
-    emptyObj[guid] = {itemDesc: todo};
+    emptyObj[guid] = todo;
     console.log(emptyObj);
     myFirebaseRef.update(
         emptyObj
