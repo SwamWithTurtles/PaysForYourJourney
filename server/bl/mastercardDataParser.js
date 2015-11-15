@@ -21,23 +21,34 @@ module.exports.populateTflData = function (journeys, callback) {
                         ) < 750;
                 });
 
-                step.offers = _.map(closeOffers, function (offer) {
+                _.forEach(_.map(closeOffers, function (offer) {
                     return ["Stop off at " + offer.Merchant.Name + "? " + offer.Headline]
+                }), function (closeOffer) {
+                    if (!step.offers) {
+                        step.offers = [];
+                    }
+                    step.offers.push(closeOffer)
                 });
+
+                if (!step.offers) {
+                    step.offers = [];
+                }
             });
 
 
         });
 
-        journeys = _.sortBy(journeys, function(j) {return j.duration;});
+        journeys = _.sortBy(journeys, function (j) {
+            return j.duration;
+        });
 
         callback(journeys);
     });
 
 };
 
-module.exports.rawDeals = function(callback) {
-    mastercardGateway.getData(function(opportunities) {
+module.exports.rawDeals = function (callback) {
+    mastercardGateway.getData(function (opportunities) {
         callback(opportunities.Response.Items);
     });
 }
@@ -47,12 +58,16 @@ module.exports.detourJourneys = function (from, to, callback) {
 
         var answers = [];
 
-        var promises = _.map(opportunities.Response.Items, (function(opp) {
+        var promises = _.map(opportunities.Response.Items, (function (opp) {
             return tflGateway.getDataVia(from, to, opp, function (leg1, leg2) {
                 var parsedJourney1 = tflDataParser.parseJourney(leg1);
                 var parsedJourney2 = tflDataParser.parseJourney(leg2);
-                var easiestJourney1 = _.min(parsedJourney1, function(c) {return c.duration;});
-                var easiestJourney2 = _.min(parsedJourney2, function(c) {return c.duration;});
+                var easiestJourney1 = _.min(parsedJourney1, function (c) {
+                    return c.duration;
+                });
+                var easiestJourney2 = _.min(parsedJourney2, function (c) {
+                    return c.duration;
+                });
 
                 var parsedJourney = {};
                 parsedJourney.steps = _.union(easiestJourney1.steps, easiestJourney2.steps);
@@ -64,7 +79,7 @@ module.exports.detourJourneys = function (from, to, callback) {
         }));
 
 
-        Q.all(promises).then(function() {
+        Q.all(promises).then(function () {
             callback(answers)
         });
 

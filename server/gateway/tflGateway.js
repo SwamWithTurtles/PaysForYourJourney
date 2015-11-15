@@ -11,7 +11,6 @@ var tflApiUriVia = function(from, to, via) {
 var request = require('request');
 
 module.exports.getData = function(locFrom, locTo, callback) {
-    console.log(tflApiUri(locFrom, locTo))
     request(tflApiUri(locFrom, locTo), callback);
 }
 

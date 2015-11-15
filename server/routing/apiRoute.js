@@ -56,19 +56,26 @@ var setUp = function(app) {
             var journey = _.sortBy(journeys, function(j) {return j.duration})[0];
             journey.title = "Direct";
 
-            mastercardDataParser.populateTflData([journey], res.send.bind(res));
+            mastercardDataParser.populateTflData([journey],
+                function(x) {todoDataParser.populateTflData(x, res.send.bind(res))}
+            );
+
         });
     });
 
     app.get('/tfl/detours', function(req, res) {
         mastercardDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
-            mastercardDataParser.populateTflData(body, res.send.bind(res));
+            mastercardDataParser.populateTflData(body,
+                function(x) {todoDataParser.populateTflData(x, res.send.bind(res))}
+            );
         });
     });
 
     app.get('/todo/detours', function(req, res) {
         todoDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], function(body) {
-            mastercardDataParser.populateTflData(body, res.send.bind(res));
+            mastercardDataParser.populateTflData(body,
+                function(x) {todoDataParser.populateTflData(x, res.send.bind(res))}
+            );
         });
     })
 

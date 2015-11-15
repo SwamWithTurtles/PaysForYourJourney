@@ -32,8 +32,43 @@ module.exports.detourJourneys = function (from, to, callback) {
         });
 
         Q.all(promises).then(function() {
-            console.log("AAA", answers);
             callback(answers)
         });
     });
+};
+
+module.exports.populateTflData = function (journeys, callback) {
+    Firebase.listTodos(function (todoList) {
+        var todos = todoList.items;
+        _.forEach(journeys, function (j) {
+            _.forEach(j.steps, function (step) {
+
+                var closeOffers = _.filter(todos, function (item) {
+                    return latLongDistanceCalculator.calculateDistance(
+                            {lat: "51.5076865", lon: "-0.2239196"},
+                            {lat: step.latitude, lon: step.longitude}
+                        ) < 750;
+                });
+
+                _.forEach(_.map(closeOffers, function (item) {
+                    return ["Stop off at " + item[1].location + "? " + item[1].itemDesc]
+                }), function (closeOffer) {
+                    if (!step.offers) {
+                        step.offers = [];
+                    }
+                    step.offers.push(closeOffer)
+                });
+
+                if (!step.offers) {
+                    step.offers = [];
+                }
+            });
+
+        });
+
+        journeys = _.sortBy(journeys, function(j) {return j.duration;});
+
+        callback(journeys);
+    });
+
 };

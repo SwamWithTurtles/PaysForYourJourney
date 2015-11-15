@@ -9,7 +9,6 @@ var writeTodo = function(todo) {
     var guid = Guid.raw();
     var emptyObj = {};
     emptyObj[guid] = todo;
-    console.log(emptyObj);
     myFirebaseRef.update(
         emptyObj
     )
