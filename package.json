@@ -41,8 +41,5 @@
   "engines": {
     "node": "0.12.x",
     "npm": "1.2.x"
-  },
-  "scripts": {
-    "postinstall": "bower install && grunt build"
   }
 }
