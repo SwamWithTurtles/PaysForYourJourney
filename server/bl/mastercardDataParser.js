@@ -36,6 +36,12 @@ module.exports.populateTflData = function (journeys, callback) {
 
 };
 
+module.exports.rawDeals = function(callback) {
+    mastercardGateway.getData(function(opportunities) {
+        callback(opportunities.Response.Items);
+    });
+}
+
 module.exports.detourJourneys = function (from, to, callback) {
     mastercardGateway.getData(function (opportunities) {
 

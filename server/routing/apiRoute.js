@@ -14,10 +14,8 @@ var setUp = function(app) {
 
     app.use(bodyParser.urlencoded());
 
-    app.get('/api/sample', function (request, response) {
-        response.send({
-            hello: "World"
-        });
+    app.get('/mastercard/offers', function(req, res) {
+        mastercardDataParser.rawDeals(res.send.bind(res));
     });
 
     app.get('/tfl/routes', function(req, res) {
