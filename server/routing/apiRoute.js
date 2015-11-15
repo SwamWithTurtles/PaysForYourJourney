@@ -24,6 +24,10 @@ var setUp = function(app) {
             mastercardDataParser.populateTflData(journeys, res.send.bind(res));
         });
     });
+
+    app.get('/tfl/detours', function(req, res) {
+        mastercardDataParser.detourJourneys(req.query['locFrom'], req.query['locTo'], res.send.bind(res));
+    });
 };
 
 module.exports.setUp = setUp;
