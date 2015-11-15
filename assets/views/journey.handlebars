@@ -55,11 +55,11 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 journey-steps" style="" data-bind="visible: visible">
+            <div class="col-xs-12 journey-steps" style="padding: 12px 5px 0px 5px;" data-bind="visible: visible">
                 <!-- ko foreach: steps-->
                 <div class="col-xs-12 journey-step" style="padding-bottom: 3px;">
 
-                    <div class="col-xs-3 journey-step-transport" style="">
+                    <div class="col-xs-3 journey-step-transport" style="padding: 0px; display: block; overflow: hidden;">
                         <span data-bind="text: transport"></span>
                     </div>
 
@@ -74,6 +74,9 @@
                         <!-- /ko -->
                         <!--ko if: mode == 'tube' -->
                             <div class="tfltube">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'overground' -->
+                        <div class="tfltube">&nbsp;</div>
                         <!-- /ko -->
                         <!--ko if: mode == 'national-rail' -->
                         <div class="tflrail">&nbsp;</div>
