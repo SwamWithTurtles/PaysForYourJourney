@@ -1,0 +1,16 @@
+
+.wishlist
+{
+    ul {
+        margin: 0px;
+        padding: 0px;
+
+        li {
+            list-style-type: none;
+            margin: 5px;
+            padding: 3px;
+            border: 1px solid #aaa;
+            background-color: rgba(255,255,255,0.15);
+        }
+    }
+}

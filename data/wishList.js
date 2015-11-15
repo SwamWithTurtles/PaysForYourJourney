@@ -4,19 +4,21 @@ var wishListData = function() {
 
     console.log('Trying to read file');
 
-    fs.readFile('./data/wishList.txt', 'utf8', function (err, data) {
-        if (err) {
-            return console.log(err);
-        }
+    return fs.readFileSync('./data/wishList.txt').toString();
 
-        console.log('No error - sending data');
-
-        var retData = JSON.parse(data);
-
-        console.log(retData);
-
-        return(retData);
-    });
+    //fs.readFile('./data/wishList.txt', 'utf8', function (err, data) {
+    //    if (err) {
+    //        return console.log(err);
+    //    }
+    //
+    //    console.log('No error - sending data');
+    //
+    //    var retData = JSON.parse(data);
+    //
+    //    console.log(retData);
+    //
+    //    return(retData);
+    //});
 
     //return({
     //    "WishList": [
