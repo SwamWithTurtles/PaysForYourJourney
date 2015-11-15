@@ -25,7 +25,7 @@ module.exports.detourJourneys = function (from, to, callback) {
                 var parsedJourney = {};
                 parsedJourney.steps = _.union(easiestJourney1.steps, easiestJourney2.steps);
                 parsedJourney.headline = todoName;
-                parsedJourney.title = "via " + todoLoc;
+                parsedJourney.title = '"' + todoName + '" via ' + todoLoc;
                 parsedJourney.duration = easiestJourney1.duration + easiestJourney2.duration;
                 answers.push(parsedJourney);
             });
