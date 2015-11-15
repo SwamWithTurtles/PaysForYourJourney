@@ -1,0 +1,153 @@
+<script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+
+
+<div class="container">
+
+    <div class="row">
+    </div>
+
+    <form action="disambiguation">
+        <div class="input-group col-xs-offset-2 col-xs-8">
+
+            <div class="row" style="text-align: left; margin-bottom: 5px;">
+                <b>Plan a route:</b>
+            </div>
+
+            <div class="row">
+
+                <div style="position: relative;">
+
+                    <input class="form-control inputBoxOverrides" placeholder="From" id="loc_from"
+                           tabindex=1 name="loc_from" aria-label="..." />
+
+                    <a href="#" onClick="setFromHome()">
+                    <img style="position: absolute; right: 0px; width: 30px; z-index: 1000; opacity: 0.9; top:0px;"
+                         src="images/home_basic_blue.png" />
+                    </a>
+
+                    <a href="#" onClick="setFromWork()">
+                        <img style="position: absolute; right: 35px; width: 30px; z-index: 1000; opacity: 0.9; top:0px;"
+                             src="images/briefcase_basic_blue.png" />
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <div class="row">
+
+                <div style="position: relative;">
+
+                    <input class="form-control inputBoxOverrides" placeholder="To"
+                           tabindex=2 id="loc_to" name="loc_to" /><br/>
+
+                    <a href="#" onClick="setToHome()">
+                        <img style="position: absolute; right: 0px; width: 30px; z-index: 1000; opacity: 0.9; top:0px;"
+                             src="images/home_basic_blue.png" />
+                    </a>
+
+                    <a href="#" onClick="setToWork()">
+                        <img style="position: absolute; right: 35px; width: 30px; z-index: 1000; opacity: 0.9; top:0px;"
+                             src="images/briefcase_basic_blue.png" />
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <input type="submit" style="width: 250px; font-weight: bold;" tabindex=3
+                   value="Find my routes" class="btn btn-me btn-info"/>
+
+            <script>
+                setFromHome = function() {
+                    $("#loc_from").val("Maple Avenue");
+                }
+                setFromWork = function() {
+                    $("#loc_from").val("St Pauls Underground");
+                }
+                setToHome = function() {
+                    $("#loc_to").val("Maple Avenue");
+                }
+                setToWork = function() {
+                    $("#loc_to").val("St Pauls Underground");
+                }
+            </script>
+
+        </div>
+    </form>
+
+    <br />
+
+
+        <div class="input-group col-xs-offset-2 col-xs-8">
+
+            <div class="row" style="text-align: left; margin-bottom: 5px;">
+                <b>My To Do List:</b>
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <div class="row">
+                <form action="addItem" method="get">
+                    <div class="col-xs-12" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
+                        <input style="width: 100%;" class="form-control inputBoxOverrides" tabindex="4"
+                               placeholder=" New Task" name="todo" aria-label="..." />
+
+                        <div style="height: 5px; clear: both;">&nbsp;</div>
+
+                        <input style="width: 100%;" class="form-control inputBoxOverrides" tabindex="5"
+                               placeholder=" Location" name="location" aria-label="..." />
+                    </div>
+                    <div class="col-xs-4" style="padding: 40px 0px 0px 15px;">
+                        <input style="width: 100%; font-weight: bold;" type="submit" tabindex="6"
+                               value="Add New" class="btn btn-sm btn-info col-xs-2"/>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row" style="padding:5px">
+            </div>
+
+            <div class="row">
+
+                <div class="" data-bind="if: !waitingForData()">
+                    <div class="wishlist">
+                            <!-- ko foreach: items -->
+                            <div class="wishlist-item">
+                                <div class="wishlist-item-image">
+                                    <!-- ko if: isMastercard -->
+                                        <img src="images/mastercard_logo_1.gif">
+                                    <!-- /ko -->
+                                    <!--ko if: !isMastercard -->
+                                        <div style="margin-left: 35px;" class="tflstar">&nbsp;</div>
+                                    <!-- /ko -->
+                                </div>
+                                <div class="wishlist-item-text">
+                                    <span data-bind="text: itemDesc"></span>
+                                    <div data-bind="visible: !isMastercard" style="float: right;">
+                                        <i data-bind="click: click"
+                                           class="glyphicon glyphicon-remove remove-button"></i>
+                                    </div>
+                                </div>
+
+                                <div style="float: none; clear:both;"> </div>
+                            </div>
+                            <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+</div>

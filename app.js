@@ -33,6 +33,9 @@ if (process.env.NODE_ENV === 'production') {
 
     // Locate the assets
     app.use(express.static(__dirname + '/dist/assets'));
+    app.use('images/', express.static(__dirname + '/dist/assets/images/'));
+    app.use('scripts', express.static(__dirname + '/dist/assets/scripts/'));
+    app.use('styles', express.static(__dirname + '/dist/assets/styles'));
 
 } else {
     app.engine('handlebars', exphbs({
