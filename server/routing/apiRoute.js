@@ -79,6 +79,15 @@ var setUp = function(app) {
         });
     })
 
+    app.post('/todo/delete', function(req, res) {
+        var firebase = require('../dao/firebase');
+
+        firebase.delete(req.body.id);
+
+        res.statusCode = 200;
+        res.end();
+    })
+
 
 };
 

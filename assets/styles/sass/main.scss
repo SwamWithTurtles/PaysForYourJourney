@@ -32,3 +32,11 @@
     width: 32px;
     background: url("../images/tfl_vsprite.png") 0 -1184px;
 }
+
+.remove-button {
+
+
+    &:hover {
+        color: red;
+    }
+}

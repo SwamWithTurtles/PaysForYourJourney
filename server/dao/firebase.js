@@ -15,13 +15,17 @@ var writeTodo = function(todo) {
 };
 
 var read = function(callback) {
-    var lock = false;
-    var data;
     myFirebaseRef.once("value", function(snapshot) {
-        data = snapshot.val();
+        var data = snapshot.val();
         callback({items: _.pairs(data)});
     });
 };
 
+var deleteItem = function(id) {
+    var foo = myFirebaseRef.child(id);
+    foo.remove();
+}
+
 module.exports.writeTodo = writeTodo;
 module.exports.listTodos = read;
+module.exports.delete = deleteItem;
