@@ -51,8 +51,9 @@ module.exports.populateTflData = function (journeys, callback) {
                 });
 
                 _.forEach(_.map(closeOffers, function (item) {
-                    return ["Stop off at " + item[1].location + "? " + item[1].itemDesc]
+                    return {name: "Stop off at " + item[1].location + "? " + item[1].itemDesc, isMastercard: false }
                 }), function (closeOffer) {
+                    closeOffer.isMastercard = false;
                     if (!step.offers) {
                         step.offers = [];
                     }

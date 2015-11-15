@@ -22,8 +22,9 @@ module.exports.populateTflData = function (journeys, callback) {
                 });
 
                 _.forEach(_.map(closeOffers, function (offer) {
-                    return ["Stop off at " + offer.Merchant.Name + "? " + offer.Headline]
+                    return {name: "Stop off at " + offer.Merchant.Name + "? " + offer.Headline, isMastercard: true}
                 }), function (closeOffer) {
+                    closeOffer.isMastercard = true;
                     if (!step.offers) {
                         step.offers = [];
                     }
