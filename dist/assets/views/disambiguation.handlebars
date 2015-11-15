@@ -1,0 +1,97 @@
+<script data-main="scripts/disambiguation" src="bower_components/requirejs/require.js"></script>
+
+
+<div class="container">
+
+    <div data-bind="if: ambiguityResolved">
+        <h2>Your Journey</h2>
+    </div>
+    <div data-bind="if: !ambiguityResolved()">
+        <h2>Clarify your Journey</h2>
+    </div>
+
+
+    <div class="spinner" data-bind="if: waitingForData">
+        <img src="images/spinner.gif" />
+    </div>
+
+    <div class="col-xs-offset-1 col-xs-10 disambiguiation-content" data-bind="if: !waitingForData()"><br/>
+
+        <div class="ToFromGroup">
+
+            <div class="ToFromGroupHeader">
+                From: "<span data-bind="text: locFrom"></span>"
+                <div data-bind="if: locFromAmbiguous" style="float:right;">
+                    <img style="width: 40px;" src="images/multipleOptions.png" />
+                </div>
+            </div>
+
+            <div data-bind="if: locFromKnown">
+                <div data-bind="if: locFromAmbiguous">
+
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <b>Multiple possible locations...</b> Do you mean?
+                    </div>
+
+                    <div class="ToFromDisAmbList">
+                        <ul>
+                            <!-- ko foreach: locFromOptions -->
+                            <li data-bind="text: name, click: click"></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div data-bind="if: !locFromKnown()">
+                Cannot find a match for this location.
+            </div>
+        </div>
+
+        <div  class="ToFromGroup">
+
+            <div  class="ToFromGroupHeader">
+                To: "<span data-bind="text: locTo"></span>"
+                <div data-bind="if: logToAmbiguous" style="float:right;">
+                    <img style="width: 40px;" src="images/multipleOptions.png" />
+                </div>
+            </div>
+
+            <div data-bind="if: locToKnown">
+                <div data-bind="if: logToAmbiguous">
+
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <b>Multiple possible locations...</b> Do you mean?
+                    </div>
+
+                    <div class="ToFromDisAmbList">
+                        <ul>
+                            <!-- ko foreach: logToOptions -->
+                            <li data-bind="text: name, click: click"></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="if: !locToKnown()">
+                Cannot find a match for this location.
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="destination" data-bind="if: ambiguityResolved">
+        <a class="btn btn-s btn-info" style="width: 250px" data-bind="attr: {href: link}">Plan Journey</a>
+    </div>
+
+    <div style="padding: 10px;"></div>
+
+    <div>
+        <iframe width="100%" height="400px" frameborder="0" style="border: 0px;"
+                data-bind="attr: { src : mapLink }"></iframe>
+    </div>
+
+</div>

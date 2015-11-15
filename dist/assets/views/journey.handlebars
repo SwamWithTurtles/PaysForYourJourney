@@ -1,0 +1,121 @@
+<script data-main="scripts/journey" src="bower_components/requirejs/require.js"></script>
+
+
+<div class="container">
+
+    <h2>Your Journey Options</h2>
+
+
+    <div class="spinner" data-bind="if: waitingForData">
+        <img src="images/spinner.gif" />
+    </div>
+
+    <div class="disambiguiation-content" data-bind="if: !waitingForData()">
+
+        <div data-bind="with: journey" style="margin-bottom: 8px; ">
+            <b>"<span data-bind="text: from"></span></b>" to "<b><span data-bind="text: to"></span></b>"
+        </div>
+
+        <div data-bind="foreach: sortedJourneys">
+
+            <div class="col-xs-12 journey-container" data-bind="css: {expanded: visible}">
+
+                <div class="col-xs-9 left-container" data-bind="click: click">
+                    <div class="journey-title" data-bind="text: title"></div>
+
+                    <div class="more-details">
+                        <!-- ko foreach: steps-->
+                            <!--ko if: mode == 'walking' -->
+                            <div class="tflwalk">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'bus' -->
+                            <div class="tflbus">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'tube' -->
+                            <div class="tfltube">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'overground' -->
+                            <div class="tfltube">&nbsp;</div>
+                            <!-- /ko -->
+                            <!--ko if: mode == 'national-rail' -->
+                            <div class="tflrail">&nbsp;</div>
+                            <!-- /ko -->
+
+                            <!--ko if: offers.length >= 1  -->
+                                <div class="tflstarClose">&nbsp;</div>
+                            <!-- /ko -->
+
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div class="col-xs-3 journey-duration" data-bind="style: {'background-color': color}">
+                    <span class="minutes" data-bind="text: durationStatus"></span>
+                    <br/> minutes
+                </div>
+            </div>
+
+            <div class="col-xs-12 journey-steps" style="padding: 12px 5px 0px 5px;" data-bind="visible: visible">
+                <!-- ko foreach: steps-->
+                <div class="col-xs-12 journey-step" style="padding-bottom: 3px;">
+
+                    <div class="col-xs-3 journey-step-transport" style="padding: 0px; display: block; overflow: hidden;">
+                        <span data-bind="text: transport"></span>
+                    </div>
+
+                    <div class="col-xs-2 methodicons" style="">
+                        <!--(<span data-bind="text: mode"></span>)-->
+
+                        <!--ko if: mode == 'walking' -->
+                            <div class="tflwalk">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'bus' -->
+                            <div class="tflbus">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'tube' -->
+                            <div class="tfltube">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'overground' -->
+                        <div class="tfltube">&nbsp;</div>
+                        <!-- /ko -->
+                        <!--ko if: mode == 'national-rail' -->
+                        <div class="tflrail">&nbsp;</div>
+                        <!-- /ko -->
+
+                        <!--ko if: offers.length >= 1 -->
+                        <div class="tflstar">&nbsp;</div>
+                        <!-- /ko -->
+
+                    </div>
+
+                    <div class="col-xs-7 journey-step-destination" style="">
+                        <span data-bind="text: destination"></span>
+                        <br/>
+
+                        <!--ko if: !offersExpanded() && offers.length > 1 -->
+                        <div class="text-danger bg-danger" style="padding: 4px;">
+                            <small>
+                                <span data-bind="click: expandOffers">
+                                You have <span data-bind="text: offers.length">
+                                </span> offers</span>
+                            </small>
+                            </div>
+                        <!-- /ko -->
+
+                        <!--ko if: offersExpanded() || offers.length === 1 -->
+                            <!-- ko foreach: offers -->
+                        <div class="text-danger bg-danger" style="padding: 4px;">
+                                <small><span data-bind="text: name"></span></small>
+                                <br/>
+                            </div>
+                            <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,582 @@
+@charset "UTF-8";
+/*------------------------------------*    SCREEN.CSS
+\*------------------------------------*/
+/**
+ * Setup
+ */
+/*------------------------------------*    VARS.SCSS
+\*------------------------------------*/
+/**
+ * OBJECTS-AND-ABSTRACTIONS
+ * OVERRIDES
+ * CUSTOM
+    ^ COLORS
+    ^ FONTS
+    ^ CUSTOM FONT MIXINS
+*/
+/**
+ * Any variables you find set in inuit.css’ `_vars.scss` that you do not wish to
+ * keep, simply redefine here. This means that if inuit.css, for example, sets
+ * your `$base-font-size` at 16px and you wish it to be 14px, simply redeclare
+ * that variable in this file. inuit.css ignores its own variables in favour of
+ * using your own, so you can completely modify how inuit.css works without ever
+ * having to alter the framework itself.
+ */
+/*------------------------------------*    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+/*------------------------------------*    $OVERRIDES
+\*------------------------------------*/
+/**
+ * Place any variables that should override inuit.css’ defaults here.
+ */
+/**
+ * Other overrides to inuit
+ */
+label {
+  cursor: default !important; }
+
+.form-fields input[type=text] {
+  cursor: text; }
+
+.check-list label {
+  cursor: pointer !important; }
+
+/*------------------------------------*    $CUSTOM
+\*------------------------------------*/
+/**
+ * Place any of your own variables that sit on top of inuit.css here.
+ */
+/**
+ * ^COLORS 
+ */
+/**
+ * ^FONTS
+ */
+/**
+ * ^CUSTOM FONT MIXINS 
+ */
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * MIXINS
+*/
+/*------------------------------------*    $MIXINS
+\*------------------------------------*/
+body .journey-container {
+  margin: 8px 0px 0px 0px;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding-right: 0px; }
+  body .journey-container .left-container {
+    float: left;
+    text-align: left; }
+    body .journey-container .left-container .journey-title {
+      font-size: 1.4em; }
+    body .journey-container .left-container .more-details {
+      clear: both;
+      float: left; }
+  body .journey-container .journey-duration {
+    float: right;
+    height: 100%;
+    min-height: 100%;
+    background-color: #366097;
+    opacity: 0.85;
+    border-radius: 0px 0px 0px 20px; }
+    body .journey-container .journey-duration .minutes {
+      font-size: 200%;
+      font-weight: bolder; }
+
+body .journey-steps {
+  padding-top: 5px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 0px 0px 20px 20px; }
+
+body .journey-step-destination {
+  text-align: left; }
+
+body .journey-step-transport {
+  text-align: right; }
+
+body .tflwalk {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") -32px -256px;
+  float: left; }
+
+body .tflbus {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") -32px -320px;
+  float: left; }
+
+body .tfltube {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") 0 -416px;
+  float: left; }
+
+body .tflstar {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") 0 -1184px;
+  float: left; }
+
+body .tflstarClose {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") 0 -1184px;
+  float: left;
+  margin-top: -7px;
+  margin-left: -13px;
+  margin-bottom: 7px; }
+
+body .tflrail {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") -32px -352px;
+  float: left; }
+
+body .tflAdd {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") -32px -704px;
+  float: left;
+  margin-top: -7px;
+  margin-left: -13px; }
+
+body .methodicons {
+  padding: 0px 0px 0px 0px; }
+
+.ToFromGroup {
+  padding: 20px 20px 20px 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 15px; }
+
+.ToFromGroupHeader {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left; }
+
+.ToFromDisAmbList ul {
+  margin: 0px;
+  padding: 0px; }
+  .ToFromDisAmbList ul li {
+    list-style-type: none;
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid #aaa; }
+
+.wishlist {
+  margin: 0px;
+  padding: 0px; }
+
+.wishlist-item {
+  margin: 5px;
+  padding: 3px;
+  border: 1px solid #aaa;
+  background-color: rgba(255, 255, 255, 0.15);
+  overflow: auto; }
+
+.wishlist-item-image {
+  float: left;
+  display: block;
+  width: 100px;
+  overflow: auto;
+  text-align: center; }
+
+.wishlist-item-text {
+  padding-left: 120px;
+  text-align: left; }
+
+.tflstar {
+  height: 32px;
+  width: 32px;
+  background: url("../images/tfl_vsprite.png") 0 -1184px; }
+
+.remove-button:hover {
+  color: red; }
+
+/**
+ * She’s all yours, cap’n... Begin importing your stuff here.
+ */
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * GRID
+*/
+/*------------------------------------*    $GRID
+\*------------------------------------*/
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * GLOBAL
+ * COLORS
+ * LOAD FONTS
+ * ICONS
+ * HEADINGS
+ * LINKS
+ * ICONS
+ * OTHER
+*/
+/*------------------------------------*    $GLOBAL
+\*------------------------------------*/
+html {
+  font-weight: 300;
+  font-style: normal; }
+
+body {
+  background-color: black;
+  color: white;
+  text-align: center; }
+
+/*------------------------------------*    $COLORS
+\*------------------------------------*/
+/*------------------------------------*    $LOAD FONTS
+\*------------------------------------*/
+/*------------------------------------*    $ICONS
+\*------------------------------------*/
+[data-icon]:before {
+  content: attr(data-icon);
+  text-transform: none;
+  font-weight: normal;
+  font-variant: normal;
+  font-family: 'Icons';
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+
+/*------------------------------------*    $HEADINGS
+\*------------------------------------*/
+/*------------------------------------*    $LINKS
+\*------------------------------------*/
+a {
+  color: #58585B; }
+  a:hover {
+    color: #D70014; }
+
+/*------------------------------------*    $OTHER
+\*------------------------------------*/
+strong,
+.bold {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+.no-underline {
+  text-decoration: none; }
+
+::selection {
+  background: #D70014;
+  color: #FFF; }
+
+::-moz-selection {
+  background: #D70014;
+  color: #FFF; }
+
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * TEXT
+ * BACKGROUND
+ * BORDERS
+ * BLOCKS
+*/
+/*------------------------------------*    $TEXT
+\*------------------------------------*/
+.white {
+  color: #FFF; }
+
+.gray1 {
+  color: #F7F7F7; }
+
+.gray2 {
+  color: #EEE; }
+
+.gray3 {
+  color: #D8D8D8; }
+
+.gray4 {
+  color: #9A9EA1; }
+
+.gray5 {
+  color: #808284; }
+
+.gray6 {
+  color: #58585B; }
+
+.black {
+  color: #000; }
+
+.color-twitter,
+.hover-color-twitter:hover {
+  color: #63CDF7; }
+
+.color-linkedin,
+.hover-color-linkedin:hover {
+  color: #00659B; }
+
+.color-facebook,
+.hover-color-facebook:hover {
+  color: #3B5895; }
+
+.color-google,
+.hover-color-google:hover {
+  color: #FF0017; }
+
+.color-mail,
+.hover-color-mail:hover {
+  color: #6CBA16; }
+
+.color1,
+.hover-color1:hover,
+.hover-color1.active {
+  color: #D70014 !important; }
+
+.color2,
+.hover-color2:hover,
+.hover-color2.active {
+  color: #2F7DC4 !important; }
+
+.color3,
+.hover-color3:hover,
+.hover-color3.active {
+  color: #6CBA16 !important; }
+
+.color4,
+.hover-color4:hover,
+.hover-color4.active {
+  color: #FFA501 !important; }
+
+.color5,
+.hover-color5:hover,
+.hover-color5.active {
+  color: #8A2CA1 !important; }
+
+/*------------------------------------*    $BACKGROUND
+\*------------------------------------*/
+.bg-white {
+  background-color: #FFF; }
+
+.bg-gray1 {
+  background-color: #F7F7F7; }
+
+.bg-gray2 {
+  background-color: #EEE; }
+
+.bg-gray3 {
+  background-color: #D8D8D8; }
+
+.bg-gray4 {
+  background-color: #9A9EA1; }
+
+.bg-gray5 {
+  background-color: #808284; }
+
+.bg-gray6 {
+  background-color: #58585B; }
+
+.bg-black {
+  background-color: #000; }
+
+.bg-color1 {
+  background-color: #D70014; }
+
+.bg-color2 {
+  background-color: #2F7DC4; }
+
+.bg-color3 {
+  background-color: #6CBA16; }
+
+.bg-color4 {
+  background-color: #FFA501; }
+
+.bg-color5 {
+  background-color: #8A2CA1; }
+
+.bg-gray4,
+.bg-gray5,
+.bg-gray6,
+.bg-black,
+.bg-color1,
+.bg-color2,
+.bg-color3,
+.bg-color4,
+.bg-color5 {
+  color: #FFF; }
+
+/*------------------------------------*    $BORDERS
+\*------------------------------------*/
+.border-color1 {
+  border-color: #D70014; }
+
+.border-color2 {
+  border-color: #2F7DC4; }
+
+.border-color3 {
+  border-color: #6CBA16; }
+
+.border-color4 {
+  border-color: #FFA501; }
+
+.border-none {
+  border: none !important; }
+
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * LOGO
+*/
+/*------------------------------------*    $LOGO
+\*------------------------------------*/
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * NAV PRIMARY
+ * NAV MOBILE
+*/
+/*------------------------------------*    $NAV PRIMARY
+\*------------------------------------*/
+/*------------------------------------*    $NAV MOBILE
+\*------------------------------------*/
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * OVERRIDES
+ * LABELS
+ * INPUTS
+ * ERRORS
+ * SIZES
+*/
+/*------------------------------------*    $General
+\*------------------------------------*/
+.spinner {
+  min-width: 200px; }
+
+.spinner img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/*------------------------------------*    $OVERRIDES
+\*------------------------------------*/
+input[type=text]:active,
+input[type=text]:focus,
+input[type=password]:active,
+input[type=password]:focus {
+  cursor: text;
+  outline: none; }
+
+/*------------------------------------*    $LABELS
+\*------------------------------------*/
+/*------------------------------------*    $List items
+\*------------------------------------*/
+.listOverrides {
+  color: white;
+  background-color: rgba(100, 100, 100, 0.5);
+  font-weight: bold;
+  padding: 4px 0px 4px 12px;
+  color: white; }
+
+/*------------------------------------*    $INPUTS
+\*------------------------------------*/
+.inputBoxOverrides {
+  color: white;
+  background-color: rgba(100, 100, 100, 0.5);
+  font-weight: bold; }
+
+/*------------------------------------*    $ERRORS
+\*------------------------------------*/
+.field-with-errors {
+  position: relative;
+  display: inline-block; }
+  .field-with-errors label,
+  .field-with-errors .label {
+    color: #FFA501; }
+  .field-with-errors input,
+  .field-with-errors .select2-container .select2-choice,
+  .field-with-errors .select2-container-multi .select2-choices {
+    border-color: #FFA501 !important; }
+
+/*------------------------------------*    $SIZES
+\*------------------------------------*/
+/**
+ * Small
+ */
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * BASE
+ * SIZES
+ * COLORS
+    ^Colors
+    ^Hover
+*/
+/*------------------------------------*    $BASE
+\*------------------------------------*/
+/*------------------------------------*    $SIZES
+\*------------------------------------*/
+/*------------------------------------*    $COLORS
+\*------------------------------------*/
+/**
+ * Colors
+ */
+/**
+ * HOVERS
+ */
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+/**
+ * FOOTER
+*/
+/*------------------------------------*    $FOOTER
+\*------------------------------------*/
+/*------------------------------------*\ 
+    $CONTENTS    
+\*------------------------------------*/
+/**
+ * SECTION TITLE
+*/
+#circle1 {
+  width: 300px;
+  height: 300px;
+  background: #ef3627;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px;
+  opacity: 0.6;
+  top: 150px;
+  left: 0px;
+  z-index: -9999;
+  display: none;
+  position: fixed; }
+
+#circle2 {
+  width: 300px;
+  height: 300px;
+  background: #fcb836;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px;
+  opacity: 0.6;
+  top: 150px;
+  left: 0px;
+  z-index: -9999;
+  display: none;
+  position: fixed; }
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+  overflow: hidden; }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+  overflow: hidden; }

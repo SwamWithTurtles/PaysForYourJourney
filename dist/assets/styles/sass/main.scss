@@ -1,0 +1,42 @@
+
+.wishlist
+{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.wishlist-item {
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid #aaa;
+    background-color: rgba(255,255,255,0.15);
+    overflow: auto;
+}
+
+.wishlist-item-image {
+    float:left;
+    display: block;
+    width: 100px;
+    overflow: auto;
+    text-align: center;
+}
+
+.wishlist-item-text {
+    padding-left: 120px;
+    text-align: left;
+}
+
+.tflstar {
+    height: 32px;
+    width: 32px;
+    background: url("../images/tfl_vsprite.png") 0 -1184px;
+}
+
+.remove-button {
+
+
+    &:hover {
+        color: red;
+    }
+}
